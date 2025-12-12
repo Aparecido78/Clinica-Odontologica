@@ -1,0 +1,41 @@
+ 
+<link rel="stylesheet" href="/css/login.css">
+{{> cliente/navbar}}
+
+<main>
+    
+    
+
+
+    
+
+    <form class="form" action="/Login" method="post">
+        <label> Nome:</label>
+        <input type="text"  name="nome" placeholder="Digite seu nome:">
+        <br>
+        <label>Email:</label>
+        <input type="text"  name="email" placeholder="Digite seu email:">
+        <br>
+        <label>Senha:</label>
+        <input type="text"  name="senha" placeholder="Digite sua senha:">
+        <br>
+
+       
+            <a class="meu-link" >
+            <p class="nao_tem_conta">Não tem conta ?</p>
+            <a class="cadastre-se" style="color: blue;" href="/PaginaCadastroCliente">Cadastre-se aqui!</a>
+            </a>
+       
+
+         <br><br>
+       
+            <button class="butao_login" type="submit">Entrar</button>
+         
+    </form>
+
+
+        {{> mensagem}}
+
+
+  
+</main>

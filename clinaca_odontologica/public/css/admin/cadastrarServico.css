@@ -1,0 +1,79 @@
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 30px 0;
+}
+
+
+h1 {
+    text-align: center;
+    color: rgb(20, 140, 200);
+    margin-bottom: 20px;
+}
+
+
+form {
+    background: #ffffff;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 6px solid rgb(20, 140, 200);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 12px;
+    display: block;
+}
+
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #cde9f7;
+    border-radius: 6px;
+    margin-top: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: rgb(20, 140, 200);
+    box-shadow: 0 0 4px rgba(20, 140, 200, 0.4);
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 18px;
+    background-color: rgb(20, 140, 200);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover {
+    background-color: rgb(17, 115, 160);
+}
+
+
+.mensagem {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+}

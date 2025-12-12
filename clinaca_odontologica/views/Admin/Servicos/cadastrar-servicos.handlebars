@@ -1,0 +1,26 @@
+{{>admin/navAdmin }}
+<br><br>
+<link rel="stylesheet" href="../../../css/admin/cadastrarServico.css">
+
+<h1>Tela de Cadastro de Servicos</h1>
+
+<form action="/CadastrarServico" method="post" enctype="multipart/form-data">
+    <label>Nome:</label>
+    <input type="text" name="nome" required>
+
+    <label>Descricao:</label>
+    <input type="text" name="descricao" required>
+
+    <label>Duração:</label>
+    <input type="number" name="duracao" required>
+
+    <label>Preço:</label>
+    <input type="number" name="valor" required>
+
+    <label>Foto:</label>
+    <input type="file" name="foto">
+
+    <button type="submit">Cadastrar Servico</button>
+</form>
+
+{{> mensagem}}

@@ -1,0 +1,50 @@
+{{> cliente/navbar}}
+<link rel="stylesheet" href="/css/cadastro.css"> 
+    <h4 class="cadastro_usuario">Faça o seu cadastro</h4>
+    <br>
+  {{>mensagem}}
+
+ <form action="/FinalizarCadastroCliente" method="post">
+
+    <label>Nome:</label>
+    <input type="text" name="nome" placeholder="Digite seu nome:" required>
+    <br>
+
+    <label>Email:</label>
+    <input type="email" name="email" placeholder="Digite seu email:" required>
+    <br>
+
+    <label>Senha:</label>
+    <input type="password" name="senha" placeholder="Digite sua senha:" required>
+    <br>
+
+    <label>Telefone:</label>
+    <input type="text" name="telefone" placeholder="Digite seu número:" required>
+    <br>
+
+    <label>CPF:</label>
+    <input type="text" name="cpf" placeholder="Digite seu CPF:" required>
+    <br>
+
+    <label>Endereço:</label>
+    <input type="text" name="endereco" placeholder="Digite seu endereço:" required>
+    <br>
+
+    <label>Data de Nascimento:</label>
+    <input type="date" name="data_nascimento" required>
+    <br>
+
+    <label>Sexo:</label>
+    <select name="sexo" required>
+        <option value="">Selecione</option>
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+        <option value="outro">Outro</option>
+    </select>
+    <br>
+
+
+    <button class="butao" type="submit">Cadastrar</button>
+
+</form>
+<br><br>

@@ -1,0 +1,29 @@
+#fichaClinica{
+    width: 100%;
+    display: block;
+    flex-wrap: wrap;
+    height: auto;
+    box-sizing: border-box;
+}
+.fichaclinica{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.fichaclinica input , textarea{
+    width: 90%;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+.fichaclinica label{
+    display: block;
+}
+.bruxismo{
+    width: 20%;
+    height: 40px;
+}
+.gingiva{
+    width: 20%;
+    height: 40px;
+
+}

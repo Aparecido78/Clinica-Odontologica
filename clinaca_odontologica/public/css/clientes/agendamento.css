@@ -1,0 +1,14 @@
+.agendamentos{
+    width: 100%;
+    max-width: 500px;
+    min-width: 200px;
+    box-sizing: border-box;
+      background: rgb(246, 241, 241);
+      border: solid 1px;
+      border-radius: 20px;
+      text-align: center;
+
+}
+.clinico{
+    font-size: 30px;
+}

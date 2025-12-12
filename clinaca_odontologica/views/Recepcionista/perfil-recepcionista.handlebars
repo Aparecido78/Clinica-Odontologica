@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="../../css/recepcionista/perfil.css">
+
+<nav>
+    <a href="/PaginaInicialRecepcionista">Tela Inicial</a>
+    <a href="/logout" class="sair">Sair</a>
+</nav>
+
+<main>
+    <ul class="ul-botoes-perfil">
+        <li><a id="botaoInformacoes">Informações Pessoais</a></li>
+        <li><a id="botaoContatos">Contatos</a></li>
+        <li><a id="botaoSenha">Senha</a></li>
+    </ul>
+
+   
+    <div id="informacoesPessoais">
+        <form action="/EditarInformacoesPessoaisRecepcionista" method="post">
+            <label>CPF:</label>
+            <input type="text" name="cpf" value="{{Recepcionista.cpf}}">
+            
+            <label>Endereço:</label>
+            <input type="text" name="endereco" value="{{Recepcionista.endereco}}">
+            
+            <label>Data de Nascimento:</label>
+            <input type="date" name="data_nascimento" value="{{Recepcionista.data_nascimento}}">
+            
+            <label>Sexo:</label>
+            <input type="text" name="sexo" value="{{Recepcionista.sexo}}">
+            
+            <label>Nome:</label>
+            <input type="text" name="nome" value="{{Recepcionista.nome}}">
+            
+            <button type="submit">Editar Informações Pessoais</button>
+        </form>
+    </div>
+
+
+    <div id="contatos">
+        <form action="/EditarContatosRecepcionista" method="post">
+            <label>Email:</label>
+            <input type="email" name="email" value="{{Recepcionista.email}}">
+            
+            <label>Telefone:</label>
+            <input type="number" name="telefone" value="{{Recepcionista.telefone}}">
+            
+            <button type="submit">Editar Contatos</button>
+        </form>
+    </div>
+
+    <div id="senha">
+        <form action="/EditarSenhaRecepcionista" method="post">
+            <label>Nova Senha:</label>
+            <input type="password" name="senha" placeholder="Digite sua nova senha">
+            
+            <button type="submit">Alterar Senha</button>
+        </form>
+    </div>
+</main>
+
+<script src="../../js/recepcionista/perfil.js"></script>

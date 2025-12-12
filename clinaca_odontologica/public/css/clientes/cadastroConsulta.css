@@ -1,0 +1,70 @@
+.agendamento {
+    max-width: 500px;
+    min-width: 250px;
+    width: 90%; 
+    margin: 20px auto; 
+    padding: 10px;
+    display: block;
+    box-sizing: border-box;
+}
+
+.agendamento input,
+.agendamento select {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.agendamento label {
+    display: block;
+    margin: 10px 0 5px 0;
+}
+
+.butao {
+    width: 50%;
+    max-width: 400px;
+    min-width: 200px;
+    border-radius: 20px;
+    background: rgb(33, 189, 251);
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    margin: 20px auto 0 auto;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+.butao:hover {
+    background: rgb(20, 140, 200);
+}
+
+.cadastramentoConsulta {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+
+@media (max-width: 700px) {
+    .butao {
+        width: 70%;
+    }
+
+    .cadastramentoConsulta {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .butao {
+        width: 90%;
+    }
+
+    .cadastramentoConsulta {
+        font-size: 18px;
+    }
+}

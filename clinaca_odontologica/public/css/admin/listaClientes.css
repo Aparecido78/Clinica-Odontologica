@@ -1,0 +1,72 @@
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f5faff;
+    margin: 0;
+    padding-top: 80px; 
+}
+
+
+h1 {
+    text-align: center;
+    color: rgb(20, 140, 200);
+    margin-bottom: 25px;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+
+.cliente-card {
+    background: #ffffff;
+    border-left: 6px solid rgb(20, 140, 200);
+    max-width: 500px;
+    padding: 18px 22px;
+    margin: 15px auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: 0.25s ease;
+}
+
+
+.cliente-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+
+.cliente-card p {
+    font-size: 16px;
+    margin: 6px 0;
+    color: #333;
+}
+
+
+.cliente-card button {
+    background-color: rgb(220, 60, 60);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 15px;
+    transition: 0.2s ease;
+    width: 100%;
+}
+
+
+.cliente-card button:hover {
+    background-color: rgb(190, 40, 40);
+}
+
+
+.cliente-card form {
+    margin-top: 10px;
+}
+
+
+.mensagem {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+}

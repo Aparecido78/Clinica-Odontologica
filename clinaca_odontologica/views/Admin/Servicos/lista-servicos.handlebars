@@ -1,0 +1,27 @@
+{{>admin/navAdmin }}
+<link rel="stylesheet" href="../../../css/admin/listaServicos.css">
+
+<h1>Serviços disponíveis</h1>
+
+<div class="servicos-container">
+  {{#each ServicosDisponiveis}} 
+  <div class="servico-card">
+      <img src="/upload/{{foto}}" alt="Foto do Serviço">
+      <p>Nome: {{nome}}</p>
+      <p>Descrição: {{descricao}}</p>
+      <p>Duração: {{duracao}}</p>
+      <p>Valor: {{valor}}</p>
+      <form action="/TelaEditarServicoAdmin/{{id}}" method="get">
+          <button type="submit">Editar Serviço</button>
+      </form>
+      <form action="/AdminRemoverServico" method="post">
+        <input type="hidden" name="ServicoId" value="{{id}}">
+        <button type="submit">Remover Servico</button>
+      </form>
+
+
+  </div>
+  {{/each}}
+</div>
+
+{{> mensagem}}

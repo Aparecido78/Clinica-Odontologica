@@ -1,0 +1,22 @@
+{{>admin/navAdmin }}
+<link rel="stylesheet" href="../../../css/admin/listaClientes.css">
+
+<br><br>
+<h1>Lista de clientes Cadastrados</h1>
+
+{{#each ListaCliente}}
+
+<div class="cliente-card">
+  <p>Nome: {{nome}}</p>
+  <p>Email: {{email}}</p>
+  <p>Telefone: {{telefone}}</p>
+
+  <form action="/AdminRemoverCliente" method="post">
+      <input type="hidden" name="ClienteId" value="{{id}}">
+      <button>Remover Cliente</button>
+  </form>
+</div>
+
+{{/each}}
+
+{{>mensagem}}

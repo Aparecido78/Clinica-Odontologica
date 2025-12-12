@@ -1,0 +1,26 @@
+<h1>Agendamentos do Cliente</h1>
+
+{{#if agendamentosCliente.length}}
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Data</th>
+        <th>Horário</th>
+        <th>Serviço</th>
+        <th>Cliente</th>
+    </tr>
+
+    {{#each agendamentosCliente}}
+    <tr>
+        <td>{{this.data}}</td>
+        <td>{{this.horario}}</td>
+        <td>{{this.Servico.nome}}</td>
+        <td>{{this.Cliente.nome}}</td>
+    </tr>
+    {{/each}}
+
+</table>
+
+{{else}}
+<p>Nenhum agendamento encontrado para este CPF.</p>
+{{/if}}

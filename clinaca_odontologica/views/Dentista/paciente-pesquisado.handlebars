@@ -1,0 +1,77 @@
+<h1>Cliente Pesquisado</h1>
+
+
+{{#if ClienteEncontrado}}
+    <p>Nome: {{ClienteEncontrado.nome}}</p>
+    <p>Email: {{ClienteEncontrado.email}}</p>
+    <form action="/FichaClinicaCliente" method="post">
+        <input type="hidden" name="ClienteId" value="{{ ClienteEncontrado.id }}">
+        <button type="submit">Ficha Clinica do Cliente</button>
+    </form>
+{{/if}}
+<div id="fichaclinica"> 
+{{#if FichaCliente}}
+    <h2>Ficha Clínica</h2>
+    {{#each FichaCliente}}
+        <div class="container border border-2 m-3 p-3 rounded-4">
+            <p class="form-control"><strong>{{Cliente.nome}}</strong></p>
+            <p class="form-control"><strong>Alergias:</strong> {{alergias}}</p>
+            <p class="form-control"><strong>Medicamentos de Uso Contínuo:</strong> {{medicamentosUsoContinuo}}</p>
+            <p><strong>Doenças Pré-existentes:</strong> {{doencasPreExistentes}}</p>
+            <p><strong>Histórico Familiar:</strong> {{historicoFamiliar}}</p>
+            <p><strong>Cirurgias Anteriores:</strong> {{cirurgiasAnteriores}}</p>
+            <p><strong>Queixas:</strong> {{queixas}}</p>
+            <p><strong>Pressão Arterial:</strong> {{pressaoArterial}}</p>
+            <p><strong>Frequência Cardíaca:</strong> {{frequenciaCardiaca}}</p>
+            <p><strong>Peso:</strong> {{peso}} kg</p>
+            <p><strong>Altura:</strong> {{altura}} m</p>
+            <hr>
+            <p><strong>Higiene Bucal:</strong> {{higieneBucal}}</p>
+            <p><strong>Cáries:</strong> {{caries}}</p>
+            <p><strong>Gengiva Inflamada:</strong> {{#if gengivaInflamada}}Sim{{else}}Não{{/if}}</p>
+            <p><strong>Sensibilidade nos Dentes:</strong> {{sensibilidadeDentes}}</p>
+            <p><strong>Restaurações:</strong> {{restauracoes}}</p>
+            <p><strong>Dentes Ausentes:</strong> {{dentesAusentes}}</p>
+            <p><strong>Próteses:</strong> {{proteses}}</p>
+            <p><strong>Bruxismo:</strong> {{#if bruxismo}}Sim{{else}}Não{{/if}}</p>
+            <p><strong>Tratamento Ortodôntico:</strong> {{tratamentoOrtodontico}}</p>
+            <p><strong>Hábitos:</strong> {{habitos}}</p>
+            <p><strong>Exame Oral Geral:</strong> {{exameOralGeral}}</p>
+            <p><strong>Radiografias Recentes:</strong> {{radiografiasRecentes}}</p>
+            <p><strong>Observações Extras:</strong> {{observacoesExtras}}</p>
+        </div>
+        <h1>Formulário de Recomendações para o Cliente</h1>
+        <form action="/RecomendacoesDentista" method="POST">
+          
+            <input type="hidden" name="ClienteId" value="{{Cliente.id}}">
+           
+            <input type="hidden" name="FichaClinicaId" value="{{id}}">
+            
+            <label>Exame Físico:</label><br>
+            <textarea name="exameFisico" required></textarea>
+
+            <label>Diagnóstico:</label><br>
+            <textarea name="diagnostico" required></textarea>
+
+            <label>Tratamento:</label><br>
+            <textarea name="tratamento" required></textarea>
+
+            <label>Observações:</label><br>
+            <textarea name="observacoes"></textarea>
+
+            <button type="submit">Enviar Recomendações</button>
+        </form>
+
+
+    {{/each}}
+
+    {{else}}
+    <h2>Ficha Clínica</h2>
+    <p style="color: red; font-weight: bold;">
+        Este cliente ainda não possui ficha clínica cadastrada.
+    </p>
+{{/if}}
+</div>
+
+
+    

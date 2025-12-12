@@ -1,0 +1,32 @@
+nav {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(20, 140, 200);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    box-sizing: border-box;
+    z-index: 9999; 
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: rgb(33, 189, 251);
+}
+
+
+body {
+    margin: 0;
+    padding-top: 50px; 
+}

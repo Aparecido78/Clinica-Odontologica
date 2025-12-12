@@ -1,0 +1,188 @@
+
+<link rel="stylesheet" href="../../css/clientes/tela_inicial.css">
+<link rel="stylesheet" href="../../css/clientes/fichaclinica.css">
+<link rel="stylesheet" href="../../css/clientes/agendamento.css">
+
+{{>mensagem}}
+
+<style>
+    #fichaClinica{
+        display: none;
+    }
+</style>
+
+
+<header class="header">
+    <div class="menu">
+        <a id="butao_agendamento">Agendamentos</a>
+        <a id="butao_servicos">Servicos</a>
+        <a id="butao_fichaClinica">Ficha Clínica</a>
+        <a href="/PerfilCliente">perfil</a>
+        <a id="butao_recomendacoes">Recomendacoes do Dentista</a>
+        <a href="/logout" style="color: red;" class="sair_menu">Sair</a>
+        
+
+</div>
+
+
+<div class="tela_inicial_usuario">
+
+
+<div id="servicos">
+    
+<h1 class="h1_nome_servicos">Servicos disponiveis</h1>
+<div class="caixa-pai">
+ {{#each servicos}} 
+
+
+
+
+
+<div class="caixa_servico">
+   <br>
+    <img class="imagem_servico" src="/upload/{{foto}}">
+
+    <p class="bottom-0">Nome: {{ nome }}</p>
+    <p class="bottom-0">Descrição: {{ descricao }} </p>
+    <p class="bottom-0">Duração: {{ duracao }} </p> 
+    <p class="valor bottom-0"> {{valor}}</p> 
+
+    <form action="/TelaMarcarConsulta" method="post">
+        <input type="hidden" name="servicoId" value="{{ id }}" />
+        <button class="botao_servico" type="submit">Marcar Consulta</button>
+    </form>
+
+</div>
+
+
+
+{{/each}}
+</div>
+
+</div>
+
+<div id="agendamentos">
+   
+    <h1>Agendamentos</h1>
+     <div class="agendamentos">
+    {{#each agendamentos}}
+    <p>olá {{Cliente.nome}} voce tem uma consulta marcada</p>
+    <p>{{hora}}</p> 
+    <p>{{data}}</p>
+    
+    <p class="clinico"> {{Servico.nome}}</p>
+
+
+
+    {{/each}}
+     </div>
+   
+</div>
+
+   
+<div id="fichaClinica">
+<h1>Ficha Clínica do Paciente</h1>
+<div class="fichaclinica">
+<form action="/SalvarFichaClinica" method="post">
+
+    <label>Alergias:</label>
+    <br>
+    <textarea name="alergias" rows="3"></textarea>
+
+    <label>Medicamentos de Uso Contínuo:</label>
+    <textarea name="medicamentosUsoContinuo" rows="3"></textarea>
+
+    <label>Doenças Pré-existentes:</label>
+    <textarea name="doencasPreExistentes" rows="3"></textarea>
+
+    <label>Histórico Familiar:</label>
+    <textarea name="historicoFamiliar" rows="3"></textarea>
+
+    <label>Cirurgias Anteriores:</label>
+    <textarea name="cirurgiasAnteriores" rows="3"></textarea>
+
+    <label>Queixas:</label>
+    <br>
+    <textarea name="queixas" rows="3"></textarea>
+
+    <label>Pressão Arterial:</label>
+    <input type="text" name="pressaoArterial" placeholder="Ex: 12/8">
+
+    <label>Frequência Cardíaca (bpm):</label>
+    <input type="number" name="frequenciaCardiaca" placeholder="Ex: 72">
+
+    <label>Peso (kg):</label>
+    <br>
+    <input type="number" step="0.1" name="peso" placeholder="Ex: 70.5">
+
+    <label>Altura (m):</label>
+    <input type="number" step="0.01" name="altura" placeholder="Ex: 1.75">
+
+  
+    <label>Higiene Bucal:</label>
+    <input type="text" name="higieneBucal" placeholder="Ex: Escova 2x/dia, fio dental">
+
+    <label>Cáries:</label>
+    <br>
+    <textarea name="caries" rows="2"></textarea>
+
+    <label>Gengiva Inflamada:</label>
+    <input class="gingiva" type="checkbox" name="gengivaInflamada" value="true">
+
+    <label>Sensibilidade nos Dentes:</label>
+    <textarea name="sensibilidadeDentes" rows="2"></textarea>
+
+    <label>Restaurações:</label>
+    <textarea name="restauracoes" rows="2"></textarea>
+
+    <label>Dentes Ausentes:</label>
+    <textarea name="dentesAusentes" rows="2"></textarea>
+
+    <label>Próteses:</label>
+    <input type="text" name="proteses" placeholder="Ex: Dentadura superior">
+
+    <label>Bruxismo:</label>
+    <input class="bruxismo" type="checkbox" name="bruxismo" value="true">
+
+    <label>Tratamento Ortodôntico:</label>
+    <input type="text" name="tratamentoOrtodontico" placeholder="Ex: Aparelho fixo">
+
+    <label>Hábitos:</label>
+    <textarea name="habitos" rows="2"></textarea>
+
+    <label>Exame Oral Geral:</label>
+    <textarea name="exameOralGeral" rows="3"></textarea>
+
+    <label>Radiografias Recentes:</label>
+    <textarea name="radiografiasRecentes" rows="3"></textarea>
+
+    <label>Observações Extras:</label>
+    <textarea name="observacoesExtras" rows="3"></textarea>
+
+    <button class="botao_servico" type="submit">Salvar Ficha</button>
+
+</form>
+</div>
+
+</div>
+<div id="recomendacoes">
+    <h1>Recomendacoes do Dentista</h1>
+    {{#each RecomendaçõesDentistaCliente}}
+
+    <p>Exame fisico: {{exameFisico}}</p>
+    <p>Diagnostico: {{diagnostico}}</p>
+    <p>Tratamento : {{tratamento}}</p>
+    <p>obeservações:  {{observacoes}}</p>
+    <p>Nome dentista:  {{Dentistum.nome}}</p>
+   
+
+
+
+
+    {{/each }}
+</div>
+</div>
+
+</header>
+
+<script src="../js/clientes/tela_inicial.js"></script>

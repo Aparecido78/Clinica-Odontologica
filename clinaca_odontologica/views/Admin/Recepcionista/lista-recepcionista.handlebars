@@ -1,0 +1,17 @@
+{{>admin/navAdmin }}
+<br><br>
+<link rel="stylesheet" href="../../../css/admin/listaRecepcionista.css">
+{{#each ListaRecepcionista}}
+
+<div class="recepcionista-card">
+  <p>Nome: {{nome}}</p>
+  <p>Email: {{email}}</p>
+  <p>Telefone: {{telefone}}</p>
+
+  <form action="/AdminRemoverRecepcionista" method="post">
+    <input type="hidden" name="RecepcionistaId" value="{{id}}" />
+    <button>Remover Recepcionista</button>
+  </form>
+</div>
+
+{{/each}}

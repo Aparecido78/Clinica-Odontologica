@@ -1,0 +1,56 @@
+main {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #222;
+}
+
+
+.dentista-card {
+    width: 100%;
+    background: #fff;
+    padding: 18px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.dentista-card p {
+    font-size: 18px;
+    margin: 6px 0;
+}
+
+.botao-remover {
+    width: 100%;
+    background: rgb(220, 20, 20);
+    color: white;
+    border: none;
+    padding: 10px 0;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-remover:hover {
+    background: rgb(170, 0, 0);
+}
+
+
+@media (max-width: 600px) {
+    .dentista-card p {
+        font-size: 16px;
+    }
+
+    .botao-remover {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+}

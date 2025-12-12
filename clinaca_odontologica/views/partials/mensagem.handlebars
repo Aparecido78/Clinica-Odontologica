@@ -1,0 +1,95 @@
+<style>
+/* Container base da mensagem */
+.alert-box {
+    position: relative;
+    padding: 15px 20px 15px 50px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Tipos de alerta */
+.alert-success {
+    background-color: rgb(20, 140, 200);
+}
+
+.alert-error {
+    background-color: rgb(220, 53, 69);
+}
+
+/* Ícones */
+.alert-success::before {
+    content: "✔";
+    font-size: 20px;
+}
+
+.alert-error::before {
+    content: "✖";
+    font-size: 20px;
+}
+
+/* Botão de fechar */
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #ddd;
+}
+
+=
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+@media (max-width: 500px) {
+    .alert-box {
+        padding-left: 15px;
+        padding-right: 40px;
+    }
+}
+</style>
+
+{{#if errorMessages}}
+  {{#each errorMessages}}
+    <div class="alert-box alert-error" id="error-{{@index}}">
+        {{this}}
+        <span class="close-btn" onclick="fecharMensagem('error-{{@index}}')">&times;</span>
+    </div>
+  {{/each}}
+{{/if}}
+
+{{#if successMessages}}
+  {{#each successMessages}}
+    <div class="alert-box alert-success" id="success-{{@index}}">
+        {{this}}
+        <span class="close-btn" onclick="fecharMensagem('success-{{@index}}')">&times;</span>
+    </div>
+  {{/each}}
+{{/if}}
+
+<script>
+function fecharMensagem(id){
+    const elemento = document.getElementById(id);
+    if(elemento){
+        elemento.style.opacity = '0';
+        setTimeout(() => elemento.style.display = 'none', 300);
+    }
+}
+</script>

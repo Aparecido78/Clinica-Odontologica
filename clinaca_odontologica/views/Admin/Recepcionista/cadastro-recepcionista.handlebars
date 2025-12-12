@@ -1,0 +1,45 @@
+{{>admin/navAdmin }}
+<br><br>
+<link rel="stylesheet" href="../../css/admin/cadastroRecepcionista.css">
+
+<main>
+
+    <h1>Cadastro de Recepcionista</h1>
+
+    <form action="/FinalizarCadastroRecepcionista" method="post" class="form-box">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" placeholder="Digite o nome" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="Digite o email" required>
+
+        <label>Senha:</label>
+        <input type="password" name="senha" placeholder="Crie uma senha" required>
+
+        <label>Telefone:</label>
+        <input type="text" name="telefone" placeholder="Digite o telefone" required>
+
+        <label>CPF:</label>
+        <input type="text" name="cpf" placeholder="Digite o CPF" required>
+
+        <label>Endereço:</label>
+        <input type="text" name="endereco" placeholder="Digite o endereço" required>
+
+        <label>Data de Nascimento:</label>
+        <input type="date" name="data_nascimento" required>
+
+        <label>Sexo:</label>
+        <select name="sexo" required>
+            <option value="">Selecione</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+        </select>
+
+        <button type="submit" class="botao-cadastrar">Cadastrar</button>
+    </form>
+
+    {{> mensagem }}
+
+</main>

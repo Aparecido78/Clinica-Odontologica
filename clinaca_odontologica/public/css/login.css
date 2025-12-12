@@ -1,0 +1,107 @@
+
+.form {
+    width: 50%;
+    max-width: 500px; 
+    min-width: 280px; 
+    height: auto; 
+    padding: 20px;
+    margin: 10% auto 0 auto; 
+    box-sizing: border-box;
+}
+
+.form input {
+    margin: 10px 0;
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.form label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.meu-link {
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.nao_tem_conta {
+    margin: 0 5px;
+    color: black;
+}
+
+.cadastre-se {
+    color: blue;
+    margin: 0 5px;
+    margin-left: 35%;
+}
+
+.form button {
+    width: 100%;
+    height: 45px;
+    background: rgb(33, 189, 251);
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+@media (max-width: 768px) {
+     
+    .form {
+        width: 70%;
+        margin-top: 8%;
+    }
+
+    .form label {
+        font-size: 16px;
+    }
+
+    .form button {
+        font-size: 18px;
+    }
+    
+.cadastre-se {
+ 
+    margin-left: 0%;
+}
+}
+
+
+@media (max-width: 480px) {
+    .form {
+        width: 90%;
+        margin-top: 5%;
+        padding: 15px;
+    }
+
+    .form label {
+        font-size: 14px;
+    }
+
+    .form button {
+        font-size: 16px;
+        height: 40px;
+    }
+
+    .meu-link {
+        flex-direction: column;
+        font-size: 14px;
+    }
+
+    .cadastre-se {
+        margin-top: 5px;
+         margin-left: 0%;
+    }
+}

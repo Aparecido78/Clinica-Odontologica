@@ -1,0 +1,113 @@
+
+{{> mensagem}}
+<link rel="stylesheet" href="../../css/recepcionista/recepcionista.css">
+<link rel="stylesheet" href="../../css/recepcionista/agendamento.css">
+<link rel="stylesheet" href="../../css/recepcionista/cadastroCliente.css">
+<nav>
+    <a href="/PerfilRecepcionista">perfil</a>
+    <a id="ButaoAgendamento">fazer agendamento</a>
+    <a id="ButaoCadastrarCliente">Cadastrar cliente</a>
+    <a href="/logout">Sair</a>
+</nav>
+
+
+<div id="Agendamento">
+  
+    <h1> Pesquisar Agendamento do cliente </h1>
+    <form action="/PesquisarAgendamentoCliente" method="post"> 
+        <label>Digite cpf cliente</label>
+        <input type="number" name="cpf">
+        <button type="submit">Pesquisar Usuario</button>
+    </form>
+
+    
+   
+   <h1>Agendar Consulta para Cliente</h1>
+
+ <form action="/AgendamentoRecepcionistaCliente" method="post">
+
+    <label>CPF do Cliente:</label>
+    <input type="text" name="cpf_cliente" placeholder="Digite o CPF do cliente" required>
+    <br>
+
+    <label>Serviço:</label>
+    <select name="ServicoId" required>
+        {{#each servicos}}
+            <option value="{{id}}">{{nome}}</option>
+        {{/each}}
+    </select>
+    <br>
+
+    <label>Dentista:</label>
+    <select name="DentistumId" required>
+        {{#each dentistas}}
+            <option value="{{id}}">{{nome}}</option>
+        {{/each}}
+    </select>
+    <br>
+
+    <label>Data:</label>
+    <input type="date" name="data" required>
+    <br>
+
+    <label>Hora:</label>
+    <input type="time" name="hora" required>
+    <br>
+
+    <label>Motivo:</label>
+    <input type="text" name="motivo" required>
+    <br>
+
+    <button type="submit">Agendar</button>
+</form>
+
+</div>
+
+<div id="cadastrarCliente">
+    <h1>Cadastro de Cliente</h1>
+    <form action="/CadastrarClienteRecepcionista" method="post">
+
+    <label>Nome:</label>
+    <input type="text" name="nome" placeholder="Digite seu nome:" required>
+    <br>
+
+    <label>Email:</label>
+    <input type="email" name="email" placeholder="Digite seu email:" required>
+    <br>
+
+    <label>Senha:</label>
+    <input type="password" name="senha" placeholder="Digite sua senha:" required>
+    <br>
+
+    <label>Telefone:</label>
+    <input type="text" name="telefone" placeholder="Digite seu número:" required>
+    <br>
+
+    <label>CPF:</label>
+    <input type="text" name="cpf" placeholder="Digite seu CPF:" required>
+    <br>
+
+    <label>Endereço:</label>
+    <input type="text" name="endereco" placeholder="Digite seu endereço:" required>
+    <br>
+
+    <label>Data de Nascimento:</label>
+    <input type="date" name="data_nascimento" required>
+    <br>
+
+    <label>Sexo:</label>
+    <select name="sexo" required>
+        <option value="">Selecione</option>
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+        <option value="outro">Outro</option>
+    </select>
+    <br>
+
+
+    <button type="submit">Enviar</button>
+</form>
+
+</div>
+
+<script src="../../js/recepcionista/pagina_inicial_recepcionista.js"></script>

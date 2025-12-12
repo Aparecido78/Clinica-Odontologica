@@ -1,0 +1,28 @@
+{{>admin/navAdmin }}
+<br><br>
+<link rel="stylesheet" href="../../css/admin/listaDentista.css">
+
+<main>
+
+    <h1>Lista de Dentistas Cadastrados</h1>
+
+    {{#each ListaDentista}}
+
+    <div class="dentista-card">
+
+        <p><strong>Nome:</strong> {{nome}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Telefone:</strong> {{telefone}}</p>
+
+        <form action="/AdminRemoverDentista" method="post">
+            <input type="hidden" name="DentistaId" value="{{id}}">
+            <button class="botao-remover" type="submit">Remover Dentista</button>
+        </form>
+
+    </div>
+
+    {{/each}}
+
+    {{>mensagem}}
+
+</main>

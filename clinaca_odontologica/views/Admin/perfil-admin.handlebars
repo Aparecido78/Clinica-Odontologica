@@ -1,0 +1,67 @@
+{{>admin/navAdmin }}
+<br><br>
+{{#if success}}
+  <div class="alert alert-success">{{success}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="alert alert-danger">{{error}}</div>
+{{/if}}
+
+<div>
+    <h2>Alterar senha</h2>
+    <form action="/EditarSenhaAdmin" method="post">
+        
+        <label>Nova Senha:</label>
+        <input type="password" name="senha" placeholder="Digite sua nova senha" required>
+        <br>
+
+        <button type="submit">Alterar Senha</button>
+    </form>
+</div>
+<br>
+<hr>
+
+<div>
+    <form action="/EditarInformacoesPessoaisAdmin" method="post">
+        <label>CPF:</label>
+        <input type="text" name="cpf" value="{{AdminEncontrado.cpf}}">
+        <br>
+         <label>Endereço:</label>
+        <input type="text" name="endereco" value="{{AdminEncontrado.endereco}}">
+        <br>
+         <label>Data de Nascimento:</label>
+        <input type="date" name="data_nascimento" value="{{AdminEncontrado.data_nascimento}}">
+        <br>
+         <label>Sexo:</label>
+        <input type="text" name="sexo" value="{{AdminEncontrado.sexo}}">
+        <br>
+        <label>Nome:</label>
+        <input type="text" name="nome" value="{{AdminEncontrado.nome}}">
+        <br>
+        <button>Editar Informações Pessoais</button>
+
+    </form>
+</div>
+
+<br>
+<hr>
+<div>
+    <h1>Perfil</h1>
+    <form action="/EditarContatosAdmin" method="post">
+        
+
+        <label>Email:</label>
+        <input type="email" name="email" value="{{AdminEncontrado.email}}">
+        <br>
+        <label>Telefone</label>
+        <input type="number" name="telefone" value="{{AdminEncontrado.telefone}}">
+
+        <button>Editar  contatos</button>
+
+        
+
+       
+
+    </form>
+</div>

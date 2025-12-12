@@ -1,0 +1,70 @@
+main {
+    width: 100%;
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+
+.form-box {
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-box label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form-box input,
+.form-box select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+
+.botao-cadastrar {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: rgb(33, 189, 251);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.botao-cadastrar:hover {
+    background: rgb(20, 140, 200);
+}
+
+
+@media (max-width: 600px) {
+    .form-box {
+        padding: 18px;
+    }
+
+    .botao-cadastrar {
+        font-size: 15px;
+    }
+}

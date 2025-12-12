@@ -1,0 +1,112 @@
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+
+.cadastros-rapidos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.botao-cadastro {
+    background: rgb(20, 140, 200);
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botao-cadastro:hover {
+    background: rgb(33, 189, 251);
+}
+
+
+.dashboard {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    width: 220px;
+    text-align: center;
+}
+
+.card p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card a {
+    text-decoration: none;
+    color: rgb(20, 140, 200);
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.card a:hover {
+    color: rgb(33, 189, 251);
+}
+
+
+.alert {
+    width: 90%;
+    max-width: 500px;
+    margin: 10px auto;
+    padding: 10px 15px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+@media (max-width: 700px) {
+    .dashboard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
+
+@media (max-width: 400px) {
+    nav {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .botao-cadastro {
+        width: 95%;
+        text-align: center;
+    }
+}

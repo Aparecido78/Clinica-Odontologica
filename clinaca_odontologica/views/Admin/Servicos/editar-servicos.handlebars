@@ -1,0 +1,26 @@
+{{>admin/navAdmin }}
+<link rel="stylesheet" href="../../../css/admin/editarServico.css">
+
+<h1>Editar Serviço</h1>
+
+<form action="/AtualizarServico/{{servico.id}}" method="post" enctype="multipart/form-data">
+
+    <label>Nome</label>
+    <input type="text" name="nome" value="{{servico.nome}}" required>
+
+    <label>Descrição</label>
+    <input type="text" name="descricao" value="{{servico.descricao}}" required>
+
+    <label>Duração</label>
+    <input type="text" name="duracao" value="{{servico.duracao}}" required>
+
+    <label>Valor</label>
+    <input type="text" name="valor" value="{{servico.valor}}" required>
+
+    <label>Foto (opcional)</label>
+    <input type="file" name="foto">
+
+    <button type="submit">Salvar alterações</button>
+</form>
+
+{{> mensagem}}

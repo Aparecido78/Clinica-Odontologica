@@ -1,0 +1,76 @@
+{{> mensagem}}
+<link rel="stylesheet" href="../../css/dentista/tela_inicial.css">
+<link rel="stylesheet" href="../../css/dentista/agendaDentista.css">
+<link rel="stylesheet" href="../../css/dentista/recomendacoes.css">
+<nav>
+  <a class="perfil" href="/PerfilDentista">Perfil dentista</a>
+  <a id="ButaoAgendaDentista" href="#">Agenda dentista</a>
+  <a id="ButaoRecomendacoes" href="#">Recomendações</a>
+  <a class="nome">Nome: {{Dentista_Logado.nome}}</a>
+  <a href="/logout" class="sair">Sair</a>
+</nav>
+
+
+
+
+
+
+
+
+<div id="AgendaDentista">
+<div class="agendaDentista">
+<h1>Agenda Pessoal</h1>
+<form action="/PesquisarPaciente" method="post">
+
+    <label class="pesquisa_paciente">Pesquisa Paciente</label>
+    <input type="text" name="nome" placeholder="pesquisar paciente por nome:">
+    <button class="pesquisar" type="submit">Pesquisar</button>
+
+</form>
+
+
+
+
+{{#each AgendaDentista}}
+
+
+
+<div class="container_agenda">
+    <div class="agenda border border-3 m-3 text-center rounded-5 ">
+        <p>Cliente: {{Cliente.nome}}</p>
+        <p>Serviço: {{Servico.nome}}</p>
+        <p>Data: {{data}}</p>
+        <p>Hora: {{hora}}</p>
+        <form action="/FichaClinicaCliente" method="post">
+            <input type="hidden" name="ClienteId" value="{{ Cliente.id }}">
+            <button type="submit">Ficha Clinica do Cliente</button>
+
+        </form>
+       
+    </div>
+
+</div>
+
+{{/each}}
+</div>
+
+</div>
+
+<div id="Recomendacoes">
+    <div class="recomendacoes">
+    <h1 class="h1_pagina_recomendacoes_dentista">Página de Recomendações Feitas aos Clientes</h1>
+
+    {{#each RecomendaçõesDentista}}
+    <div class="lista_recomendacoes">
+        <h3>Cliente: {{Cliente.nome}}</h3>
+        <p><strong>Exame Físico:</strong> {{exameFisico}}</p>
+        <p><strong>Diagnóstico:</strong> {{diagnostico}}</p>
+        <p><strong>Tratamento:</strong> {{tratamento}}</p>
+        <p><strong>Observações:</strong> {{observacoes}}</p>
+    </div>
+    {{/each}}
+</div>
+
+</div>
+
+<script src="../../js/dentista/tela_inicial_dentista.js"></script>

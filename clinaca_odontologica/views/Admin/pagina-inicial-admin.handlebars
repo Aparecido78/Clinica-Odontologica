@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="../../css/admin/tela_inicail.css">
+<br><br>
+<br><br>
+
+<main>
+  {{>admin/navAdmin }}
+    <h1>Olá, Geraldo!</h1>
+
+    {{#if success}}
+      <div class="alert alert-success">{{success}}</div>
+    {{/if}}
+
+    {{#if error}}
+      <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+
+    <div class="cadastros-rapidos">
+        
+        <a class="botao-cadastro" href="/PaginaCadastroDentista">Cadastrar Dentista</a>
+        <a class="botao-cadastro" href="/TelaCadastroRecepcionista">Cadastrar Recepcionista</a>
+        <a class="botao-cadastro" href="/TelaCadastrarServicos">Cadastrar Serviço</a>
+    </div>
+
+    <div class="dashboard">
+        <div class="card">
+            <p>Total Dentistas: {{quantidade_dentista}}</p>
+            <a href="/ListaDentista">Lista Dentistas</a>
+        </div>
+
+        <div class="card">
+            <p>Total Recepcionistas: {{quantidade_recepcionista}}</p>
+            <a href="/ListaRecepcionista">Lista Recepcionistas</a>
+        </div>
+
+        <div class="card">
+            <p>Total Clientes: {{quantidade_clientes}}</p>
+            <a href="/ListaCliente">Lista Clientes</a>
+        </div>
+
+        <div class="card">
+            <p>Total Serviços: {{quantidade_servicos}}</p>
+            <a href="/ListaServicos">Lista Serviços</a>
+        </div>
+
+        <div class="card">
+            <p>Total Agendamentos: {{quantidade_agendmento}}</p>
+        </div>
+    </div>
+</main>
