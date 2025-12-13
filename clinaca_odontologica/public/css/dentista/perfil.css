@@ -34,9 +34,8 @@ main {
 #Senha, #EditarInformacoesPessoaisCliente {
     width: 100%;
     max-width: 500px;
-    display: none;
-}
 
+}
 .caixaEditarInformacoes {
     width: 90%;
     max-width: 500px;
