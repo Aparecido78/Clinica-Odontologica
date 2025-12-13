@@ -31,12 +31,6 @@ main {
 }
 
 
-#Senha, #EditarInformacoesPessoaisCliente, #EditarContatosCliente {
-    width: 100%;
-    max-width: 500px;
-    display: none;
-}
-
 .caixaEditarInformacoes {
     width: 90%;
     max-width: 500px;
@@ -146,7 +140,4 @@ main {
     padding: 10px;
     border: solid 2px;
     border-radius: 20px;
-}
-#Senha, #EditarContatosDentista{
-    display: none;
 }
