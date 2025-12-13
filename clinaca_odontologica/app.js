@@ -99,11 +99,10 @@ app.use("/", router_agendamento);
 app.use("/", router_fichaClinica);
 
 
-database.sync()
+database.sync({ alter: true })
   .then(async () => {
-    console.log("Banco conectado com sucesso");
+    console.log("Banco sincronizado com sucesso");
 
-    
     if (AdminControlador?.criarAdminPadrao) {
       await AdminControlador.criarAdminPadrao();
     }
@@ -114,5 +113,6 @@ database.sync()
     );
   })
   .catch((err) => console.error("Erro ao conectar no banco:", err));
+
 
 module.exports = app;
