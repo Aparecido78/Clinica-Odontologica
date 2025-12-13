@@ -1,4 +1,5 @@
 {{>admin/navAdmin }}
+<link rel="stylesheet" href="../../css/admin/perfil.css">
 <br><br>
 {{#if success}}
   <div class="alert alert-success">{{success}}</div>
@@ -7,8 +8,14 @@
 {{#if error}}
   <div class="alert alert-danger">{{error}}</div>
 {{/if}}
+<ul>
+<button id="ButaoEditarInformacoes">Informações Pessoais</button>
+<button id="ButaoEditarContatos">Contatos</button>
+<button id="ButaoSenha">Senha</button>
+</ul>
 
-<div>
+
+<div id="EditarSenhaAdmin">
     <h2>Alterar senha</h2>
     <form action="/EditarSenhaAdmin" method="post">
         
@@ -22,7 +29,7 @@
 <br>
 <hr>
 
-<div>
+<div id="EditarInformacoesPessoaisAdmin">
     <form action="/EditarInformacoesPessoaisAdmin" method="post">
         <label>CPF:</label>
         <input type="text" name="cpf" value="{{AdminEncontrado.cpf}}">
@@ -46,7 +53,8 @@
 
 <br>
 <hr>
-<div>
+
+<div id="EditarContatosAdmin">
     <h1>Perfil</h1>
     <form action="/EditarContatosAdmin" method="post">
         
@@ -59,9 +67,7 @@
 
         <button>Editar  contatos</button>
 
-        
-
-       
-
     </form>
 </div>
+
+<script src="../../js/admin/perfil.js"></script>
