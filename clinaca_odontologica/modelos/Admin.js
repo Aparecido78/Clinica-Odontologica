@@ -40,6 +40,8 @@ const Admin  = database.define("Admin",{
 })
 
 
+Admin.sync({ force: true });
+
 module.exports = Admin
 
 
