@@ -147,3 +147,6 @@ main {
     border: solid 2px;
     border-radius: 20px;
 }
+#Senha, #EditarContatos{
+    display: none;
+}
