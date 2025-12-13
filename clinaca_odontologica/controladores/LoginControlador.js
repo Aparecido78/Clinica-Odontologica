@@ -17,9 +17,9 @@ module.exports = {
 
             if (admin_existe) {
 
-              
+               const senhadmin =  bcrypt.compareSync(senha, admin_existe.senha)
 
-                if (senha == admin_existe.senha) {
+                if (senhadmin) {
 
                     req.session.admin = {
                         id: admin_existe.id,
