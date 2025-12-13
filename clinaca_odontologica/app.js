@@ -99,7 +99,7 @@ app.use("/", router_agendamento);
 app.use("/", router_fichaClinica);
 
 
-database.sync({ alter: true })
+database.sync()
   .then(async () => {
     console.log("Banco sincronizado com sucesso");
 
