@@ -9,22 +9,22 @@ const ButaoSenha = document.getElementById("ButaoSenha");
 
 
 ButaoEditarInformacoes.addEventListener("click", () => {
-    EditarSenhaDentista.style.display = "none";
-    EditarInformacoesPessoaisDentista.style.display = "block";
-    EditarContatosDentista.style.display = "none";
+    Senha.style.display = "none";
+    EditarInformacoesPessoais.style.display = "block";
+    EditarContatos.style.display = "none";
 });
 
 
 ButaoEditarContatos.addEventListener("click", () => {
-    EditarSenhaDentista.style.display = "none";
-    EditarInformacoesPessoaisDentista.style.display = "none";
-    EditarContatosDentista.style.display = "block";
+    Senha.style.display = "none";
+    EditarInformacoesPessoais.style.display = "none";
+    EditarContatos.style.display = "block";
 });
  
 ButaoSenha.addEventListener("click", () => {
-    EditarSenhaDentista.style.display = "block";
-    EditarInformacoesPessoaisDentista.style.display = "none";
-    EditarContatosDentista.style.display = "none";
+    Senha.style.display = "block";
+    EditarInformacoesPessoais.style.display = "none";
+    EditarContatos.style.display = "none";
 });
 
 
