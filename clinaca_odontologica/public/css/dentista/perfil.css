@@ -31,9 +31,10 @@ main {
 }
 
 
-#Senha, #EditarInformacoesPessoaisCliente {
+#Senha, #EditarContatos {
     width: 100%;
     max-width: 500px;
+    display: none;
 
 }
 .caixaEditarInformacoes {

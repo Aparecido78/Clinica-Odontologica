@@ -25,6 +25,3 @@ ButaoSenha.addEventListener("click", () => {
 });
 
 
-EditarInformacoesPessoais.style.display = "block";
-Senha.style.display = "none";
-EditarContatos.style.display = "none";
