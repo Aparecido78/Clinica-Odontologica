@@ -1,18 +1,15 @@
 <style>
-/* Container base da mensagem */
+
 .alert-box {
-    position: relative;
-    padding: 15px 20px 15px 50px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    font-weight: bold;
-    color: white;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    animation: fadeIn 0.5s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    position: fixed;      /* flutua na tela */
+    top: 70px;            /* ajustar conforme altura do navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;        /* acima de quase tudo */
+    max-width: 500px;
+    width: 90%;
 }
+
 
 /* Tipos de alerta */
 .alert-success {
@@ -51,7 +48,7 @@
     color: #ddd;
 }
 
-=
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
