@@ -5,72 +5,61 @@
     <a href="/logout" class="sair">Sair</a>
 </nav>
 
-<br><br>
+<div class="container mt-4">
 
-<!-- MENU -->
-<ul>
-    <button id="botaoInformacoes">Informações Pessoais</button>
-    <button id="botaoContatos">Contatos</button>
-    <button id="botaoSenha">Senha</button>
-</ul>
+    <!-- MENU -->
+    <ul class="mb-4">
+        <button type="button" id="ButaoEditarInformacoes">Informações Pessoais</button>
+        <button type="button" id="ButaoEditarContatos">Contatos</button>
+        <button type="button" id="ButaoSenha">Senha</button>
+    </ul>
 
-<!-- ================= SENHA ================= -->
-<div id="senha">
-    <h2>Alterar senha</h2>
-    <form action="/EditarSenhaRecepcionista" method="post">
-        <label>Nova Senha:</label>
-        <input type="password" name="senha" placeholder="Digite sua nova senha" required>
-        <br>
-        <button type="submit">Alterar Senha</button>
-    </form>
-</div>
+    <!-- ================= SENHA ================= -->
+    <div id="senha" class="box-perfil">
+        <h2>Alterar senha</h2>
+        <form action="/EditarSenhaRecepcionista" method="post">
+            <label>Nova Senha:</label>
+            <input type="password" name="senha" placeholder="Digite sua nova senha" required>
+            <button type="submit">Alterar Senha</button>
+        </form>
+    </div>
 
-<br>
-<hr>
+    <!-- ================= INFORMAÇÕES ================= -->
+    <div id="informacoesPessoais" class="box-perfil">
+        <form action="/EditarInformacoesPessoaisRecepcionista" method="post">
+            <label>CPF:</label>
+            <input type="text" name="cpf" value="{{Recepcionista.cpf}}">
 
-<!-- ================= INFORMAÇÕES PESSOAIS ================= -->
-<div id="informacoesPessoais">
-    <form action="/EditarInformacoesPessoaisRecepcionista" method="post">
-        <label>CPF:</label>
-        <input type="text" name="cpf" value="{{Recepcionista.cpf}}">
-        <br>
+            <label>Endereço:</label>
+            <input type="text" name="endereco" value="{{Recepcionista.endereco}}">
 
-        <label>Endereço:</label>
-        <input type="text" name="endereco" value="{{Recepcionista.endereco}}">
-        <br>
+            <label>Data de Nascimento:</label>
+            <input type="date" name="data_nascimento" value="{{Recepcionista.data_nascimento}}">
 
-        <label>Data de Nascimento:</label>
-        <input type="date" name="data_nascimento" value="{{Recepcionista.data_nascimento}}">
-        <br>
+            <label>Sexo:</label>
+            <input type="text" name="sexo" value="{{Recepcionista.sexo}}">
 
-        <label>Sexo:</label>
-        <input type="text" name="sexo" value="{{Recepcionista.sexo}}">
-        <br>
+            <label>Nome:</label>
+            <input type="text" name="nome" value="{{Recepcionista.nome}}">
 
-        <label>Nome:</label>
-        <input type="text" name="nome" value="{{Recepcionista.nome}}">
-        <br>
+            <button>Editar Informações Pessoais</button>
+        </form>
+    </div>
 
-        <button>Editar Informações Pessoais</button>
-    </form>
-</div>
+    <!-- ================= CONTATOS ================= -->
+    <div id="contatos" class="box-perfil">
+        <h2>Editar Contatos</h2>
+        <form action="/EditarContatosRecepcionista" method="post">
+            <label>Email:</label>
+            <input type="email" name="email" value="{{Recepcionista.email}}">
 
-<br>
-<hr>
+            <label>Telefone</label>
+            <input type="number" name="telefone" value="{{Recepcionista.telefone}}">
 
-<!-- ================= CONTATOS ================= -->
-<div id="contatos">
-    <h1>Perfil</h1>
-    <form action="/EditarContatosRecepcionista" method="post">
-        <label>Email:</label>
-        <input type="email" name="email" value="{{Recepcionista.email}}">
-        <br>
+            <button>Editar Contatos</button>
+        </form>
+    </div>
 
-        <label>Telefone</label>
-        <input type="number" name="telefone" value="{{Recepcionista.telefone}}">
-
-        <button>Editar Contatos</button>
-    </form>
 </div>
 
 <script src="../../js/recepcionista/perfil.js"></script>

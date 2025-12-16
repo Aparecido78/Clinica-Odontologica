@@ -1,70 +1,65 @@
 {{>dentista/navbar}}
 <link rel="stylesheet" href="../../css/perfil.css">
 
-<main>
-    <!-- Menu de abas -->
-    <ul>
-        <button id="ButaoEditarInformacoes">Editar Informações</button>
-        <button id="ButaoEditarContatos">Editar Contatos</button>
-        <button id="ButaoSenha">Senha</button>
+<div class="container mt-4">
+
+    <!-- MENU DE BOTÕES -->
+    <ul class="mb-4">
+        <button type="button" id="ButaoEditarInformacoes">Informações Pessoais</button>
+        <button type="button" id="ButaoEditarContatos">Contatos</button>
+        <button type="button" id="ButaoSenha">Senha</button>
     </ul>
 
-  
-    <div id="Senha">
-      
-            <h2>Alterar Senha</h2>
-            <form action="/EditarSenhaDentista" method="post">
-                <label>Nova Senha:</label>
-                <input type="password" name="senha" placeholder="Digite sua nova senha" required>
-                <br>
-                <button class="botao_servico" type="submit">Alterar Senha</button>
-            </form>
-       
+    <!-- ================= ALTERAR SENHA ================= -->
+    <div id="Senha" class="box-perfil">
+        <h2>Alterar Senha</h2>
+        <form action="/EditarSenhaDentista" method="post">
+            <label>Nova Senha:</label>
+            <input type="password" name="senha" placeholder="Digite sua nova senha" required>
+            <button type="submit">Alterar Senha</button>
+        </form>
     </div>
-    <br>
-    <hr>
 
->
-    <div id="EditarInformacoesPessoaisDentista">
-     
-            <form action="/EditarInformacoesPessoaisDentista" method="post">
-                <label>CPF:</label>
-                <input type="text" name="cpf" value="{{DentistaEncontrado.cpf}}">
-                <br>
-                <label>Endereço:</label>
-                <input type="text" name="endereco" value="{{DentistaEncontrado.endereco}}">
-                <br>
-                <label>Data de Nascimento:</label>
-                <input type="date" name="data_nascimento" value="{{DentistaEncontrado.data_nascimento}}">
-                <br>
-                <label>Sexo:</label>
-                <input type="text" name="sexo" value="{{DentistaEncontrado.sexo}}">
-                <br>
-                <label>Nome:</label>
-                <input type="text" name="nome" value="{{DentistaEncontrado.nome}}">
-                <br>
-                <button type="submit" class="butao_editar_informacoes">Editar Informações Pessoais</button>
-            </form>
-     
+    <!-- ================= EDITAR INFORMAÇÕES ================= -->
+    <div id="EditarInformacoesPessoaisDentista" class="box-perfil">
+        <form action="/EditarInformacoesPessoaisDentista" method="post">
+            <label>CPF:</label>
+            <input type="text" name="cpf" value="{{DentistaEncontrado.cpf}}">
+
+            <label>Endereço:</label>
+            <input type="text" name="endereco" value="{{DentistaEncontrado.endereco}}">
+
+            <label>Data de Nascimento:</label>
+            <input type="date" name="data_nascimento" value="{{DentistaEncontrado.data_nascimento}}">
+
+            <label>Sexo:</label>
+            <input type="text" name="sexo" value="{{DentistaEncontrado.sexo}}">
+
+            <label>Nome:</label>
+            <input type="text" name="nome" value="{{DentistaEncontrado.nome}}">
+
+            <button type="submit">
+                Editar Informações Pessoais
+            </button>
+        </form>
     </div>
-    <br>
-    <hr>
 
+    <!-- ================= EDITAR CONTATOS ================= -->
+    <div id="EditarContatosDentista" class="box-perfil">
+        <h2>Editar Contatos</h2>
+        <form action="/EditarContatosDentista" method="post">
+            <label>Email:</label>
+            <input type="email" name="email" value="{{DentistaEncontrado.email}}">
 
-    <div id="EditarContatosDentista">
-      
-            <h2>Editar Contatos</h2>
-            <form action="/EditarContatosDentista" method="post">
-                <label>Email:</label>
-                <input type="email" name="email" value="{{DentistaEncontrado.email}}">
-                <br>
-                <label>Telefone:</label>
-                <input type="number" name="telefone" value="{{DentistaEncontrado.telefone}}">
-                <br>
-                <button type="submit" class="botao_servico">Editar Contatos</button>
-            </form>
+            <label>Telefone:</label>
+            <input type="number" name="telefone" value="{{DentistaEncontrado.telefone}}">
 
+            <button type="submit">
+                Editar Contatos
+            </button>
+        </form>
     </div>
-</main>
+
+</div>
 
 <script src="../../js/dentista/perfil.js"></script>
