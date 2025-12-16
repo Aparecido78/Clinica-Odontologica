@@ -1,69 +1,71 @@
 {{>cliente/navbarfooter}}
 <link rel="stylesheet" href="../../css/perfil.css">
+<br><br>
 
-<main>
+<!-- MENU -->
+<ul>
+    <button id="ButaoEditarInformacoes">Informações Pessoais</button>
+    <button id="ButaoEditarContatos">Contatos</button>
+    <button id="ButaoSenha">Senha</button>
+</ul>
 
-    <ul>
-        <button id="ButaoEditarInformacoes">Editar Informações</button>
-        <button id="ButaoEditarContatos">Editar Contatos</button>
-        <button id="ButaoSenha">Senha</button>
-    </ul>
+<!-- ================= ALTERAR SENHA ================= -->
+<div id="EditarSenhaCliente">
+    <h2>Alterar senha</h2>
+    <form action="/EditarSenhaCliente" method="post">
+        <label>Nova Senha:</label>
+        <input type="password" name="senha" placeholder="Digite sua nova senha" required>
+        <br>
+        <button type="submit">Alterar Senha</button>
+    </form>
+</div>
 
-  
-    <div id="Senha"> 
-      
-            <h2>Alterar senha</h2>
-            <form action="/EditarSenhaCliente" method="post">
-                <label>Nova Senha:</label>
-                <input type="password" name="senha" placeholder="Digite sua nova senha" required>
-                <br>
-                <button class="botao_servico" type="submit">Alterar Senha</button>
-            </form>
-       
-    </div>
-    <br>
-    <hr>
+<br>
+<hr>
 
- 
-    <div id="EditarInformacoesPessoaisCliente">
-       
-            <form action="/EditarInformacoesPessoaisCliente" method="post">
-                <label>CPF:</label>
-                <input type="text" name="cpf" value="{{ClienteEncontrado.cpf}}">
-                <br>
-                <label>Endereço:</label>
-                <input type="text" name="endereco" value="{{ClienteEncontrado.endereco}}">
-                <br>
-                <label>Data de Nascimento:</label>
-                <input type="date" name="data_nascimento" value="{{ClienteEncontrado.data_nascimento}}">
-                <br>
-                <label>Sexo:</label>
-                <input type="text" name="sexo" value="{{ClienteEncontrado.sexo}}">
-                <br>
-                <label>Nome:</label>
-                <input type="text" name="nome" value="{{ClienteEncontrado.nome}}">
-                <br>
-                <button type="submit" class="butao_editar_informacoes">Editar Informações Pessoais</button>
-            </form>
-      
-    </div>
-    <br>
-    <hr>
+<!-- ================= EDITAR INFORMAÇÕES ================= -->
+<div id="EditarInformacoesPessoaisCliente">
+    <form action="/EditarInformacoesPessoaisCliente" method="post">
+        <label>CPF:</label>
+        <input type="text" name="cpf" value="{{ClienteEncontrado.cpf}}">
+        <br>
 
+        <label>Endereço:</label>
+        <input type="text" name="endereco" value="{{ClienteEncontrado.endereco}}">
+        <br>
 
-    <div id="EditarContatosCliente">
-      
-            <h1>Editar Contatos</h1>
-            <form action="/EditarContatosCliente" method="post">
-                <label>Email:</label>
-                <input type="email" name="email" value="{{ClienteEncontrado.email}}">
-                <br>
-                <label>Telefone:</label>
-                <input type="number" name="telefone" value="{{ClienteEncontrado.telefone}}">
-                <button type="submit" class="botao_servico">Editar Contatos</button>
-            </form>
-    
-    </div>
-</main>
+        <label>Data de Nascimento:</label>
+        <input type="date" name="data_nascimento" value="{{ClienteEncontrado.data_nascimento}}">
+        <br>
+
+        <label>Sexo:</label>
+        <input type="text" name="sexo" value="{{ClienteEncontrado.sexo}}">
+        <br>
+
+        <label>Nome:</label>
+        <input type="text" name="nome" value="{{ClienteEncontrado.nome}}">
+        <br>
+
+        <button>Editar Informações Pessoais</button>
+    </form>
+</div>
+
+<br>
+<hr>
+
+<!-- ================= EDITAR CONTATOS ================= -->
+<div id="EditarContatosCliente">
+    <h1>Perfil</h1>
+    <form action="/EditarContatosCliente" method="post">
+        <label>Email:</label>
+        <input type="email" name="email" value="{{ClienteEncontrado.email}}">
+        <br>
+
+        <label>Telefone</label>
+        <input type="number" name="telefone" value="{{ClienteEncontrado.telefone}}">
+
+        <button>Editar contatos</button>
+    </form>
+</div>
 
 <script src="../../js/clientes/Perfil.js"></script>
