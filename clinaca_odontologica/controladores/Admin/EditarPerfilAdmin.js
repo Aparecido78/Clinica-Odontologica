@@ -16,7 +16,6 @@ module.exports = {
 
 
         }catch(err){
-            console.log("erro ao ir pro perfil admin")
             res.redirect("/PaginaInicialAdmin",err)
            
             
@@ -40,7 +39,7 @@ module.exports = {
         }catch(err){
 
            
-            console.log("Eroo ao editar contatos",err)
+           
             req.flash("error","Erro ao editar contatos")
             res.redirect("/PaginaInicialAdmin")
 

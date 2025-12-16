@@ -44,7 +44,7 @@ async PaginaInicialUsuario(req,res){
     })
 
      }catch(err){
-        console.log("erro",err)
+       
         res.redirect("/PaginaLogin")
 
      }
@@ -80,12 +80,12 @@ async FinalizarCadastroCliente(req,res) {
         await sendEmail(email, "Bem-vindo ao site!", `Olá ${nome}, seu cadastro foi concluído com sucesso!`);
 
         
-        console.log("Cliente cadastrado com sucesso")
+      
         req.flash("success","Cliente cadastrado com sucesso")
         res.redirect("/PaginaLogin")
     }catch(err){
 
-        console.log("erro ao fazer login",err)
+
         req.flash("erro","erro ao cadastrar Cliente")
         res.redirect("/PaginaLogin")
     }
@@ -95,7 +95,7 @@ async PesquisarPaciente(req,res){
     const {nome} = req.body
     try{
         const ClienteEncontrado = await Clientes.findOne({where:{nome:nome}})
-        console.log("cliente encontrado com sucesso")
+    
         
 
         res.render("Dentista/paciente-pesquisado",{
@@ -103,10 +103,8 @@ async PesquisarPaciente(req,res){
             error: req.flash("error")[0],
             success: req.flash("success")[0]
            
-
         })
     }catch(err){
-        console.log("Erro ao procurar Paciente",err)
         res.redirect("/PaginaInicialDentista")
     }
 },
@@ -114,7 +112,9 @@ async PesquisarPaciente(req,res){
 async ListaCliente(req,res){
      const ListaCliente = await Clientes.findAll({ raw: true })
      res.render("Admin/Clientes/lista-clientes",{
-        ListaCliente:ListaCliente
+        ListaCliente:ListaCliente,
+        error: req.flash("error")[0],
+        success: req.flash("success")[0]
      })
 
 },
@@ -130,19 +130,19 @@ async CadastrarClienteRecepcionista(req,res){
     try{
         const email_existe = await Clientes.findOne({where:{email:email}})
         if(email_existe){
-            console.log("email invalido, escolha outro email");
+           
             req.flash("error","email invalido, escolha outro email")
             return res.redirect("/PaginaLogin")
 
         }
         await Clientes.create({nome, email, senha:hash,telefone, cpf, endereco,data_nascimento,sexo})
         
-        console.log("Cliente cadastrado com sucesso")
+       
         req.flash("success","Cliente cadastrado com sucesso")
         res.redirect("/PaginaInicialRecepcionista")
     }catch(err){
 
-        console.log("erro ao fazer login",err)
+      
         req.flash("erro","Erro ao cadastrar Cliente")
         res.redirect("/PaginaInicialRecepcionista")
     }

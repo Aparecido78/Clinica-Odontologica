@@ -16,11 +16,13 @@ module.exports = {
 
             const cliente = ClienteEncontrado.get({ plain: true });
             res.render("Cliente/perfil-cliente",{
-             ClienteEncontrado:cliente
+             ClienteEncontrado:cliente,
+             error: req.flash("error")[0],
+             success: req.flash("success")[0]
             })
 
         }catch(err){
-            console.log("erro ao ir pro perfil cliente",err)
+           
             res.redirect("/PaginaInicialUsuario")
            
         }
@@ -43,8 +45,8 @@ module.exports = {
 
         }catch(err){
              req.flash("error","Erro ao editar contatos")
-             console.log("Erro ao editar contatos",err)
-            res.redirect("/PaginaInicialUsuario")
+          
+             res.redirect("/PaginaInicialUsuario")
            
            
         }
