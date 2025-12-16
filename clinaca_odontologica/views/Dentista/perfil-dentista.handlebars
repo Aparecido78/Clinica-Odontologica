@@ -1,20 +1,18 @@
-
 {{>dentista/navbar}}
-<link rel="stylesheet" href="../../css/dentista/perfil.css">
-
+<link rel="stylesheet" href="../../css/perfil.css">
 
 <main>
-   
+    <!-- Menu de abas -->
     <ul class="ul">
         <li><a id="ButaoEditarInformacoes">Editar Informações</a></li>
         <li><a id="ButaoEditarContatos">Editar Contatos</a></li>
         <li><a id="ButaoSenha">Senha</a></li>
     </ul>
 
-   
+    <!-- ================= ALTERAR SENHA ================= -->
     <div id="Senha">
-        <div class="EditarSenha">
-            <h2>Alterar senha</h2>
+        <div id="EditarSenhaDentista" class="EditarSenha">
+            <h2>Alterar Senha</h2>
             <form action="/EditarSenhaDentista" method="post">
                 <label>Nova Senha:</label>
                 <input type="password" name="senha" placeholder="Digite sua nova senha" required>
@@ -23,11 +21,10 @@
             </form>
         </div>
     </div>
-
     <br>
     <hr>
 
-    <!-- Editar Informações Pessoais -->
+    <!-- ================= EDITAR INFORMAÇÕES PESSOAIS ================= -->
     <div id="EditarInformacoesPessoaisDentista">
         <div class="caixaEditarInformacoes">
             <form action="/EditarInformacoesPessoaisDentista" method="post">
@@ -50,14 +47,13 @@
             </form>
         </div>
     </div>
-
     <br>
     <hr>
 
- 
+    <!-- ================= EDITAR CONTATOS ================= -->
     <div id="EditarContatosDentista">
         <div class="caixaEditarcontatos">
-            <h1>Editar Contatos</h1>
+            <h2>Editar Contatos</h2>
             <form action="/EditarContatosDentista" method="post">
                 <label>Email:</label>
                 <input type="email" name="email" value="{{DentistaEncontrado.email}}">
@@ -69,7 +65,6 @@
             </form>
         </div>
     </div>
-
 </main>
 
 <script src="../../js/dentista/perfil.js"></script>

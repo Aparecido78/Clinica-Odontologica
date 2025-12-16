@@ -37,12 +37,12 @@
 
 <div class="container_agenda">
     <div class="agenda border border-3 m-3 text-center rounded-5 ">
-        <p>Cliente: {{Cliente.nome}}</p>
+        <p>Cliente: {{Clientes.nome}}</p>
         <p>Serviço: {{Servico.nome}}</p>
         <p>Data: {{data}}</p>
         <p>Hora: {{hora}}</p>
         <form action="/FichaClinicaCliente" method="post">
-            <input type="hidden" name="ClienteId" value="{{ Cliente.id }}">
+            <input type="hidden" name="ClienteId" value="{{ Clientes.id }}">
             <button type="submit">Ficha Clinica do Cliente</button>
 
         </form>
@@ -55,21 +55,32 @@
 </div>
 
 </div>
+<!-- ================= RECOMENDAÇÕES ================= -->
+<div id="Recomendacoes" class="mt-5">
+  <h2 class="mb-4 text-primary">Página de Recomendações Feitas aos Clientes</h2>
 
-<div id="Recomendacoes">
-    <div class="recomendacoes">
-    <h1 class="h1_pagina_recomendacoes_dentista">Página de Recomendações Feitas aos Clientes</h1>
-
+  <div class="row g-4">
     {{#each RecomendaçõesDentista}}
-    <div class="lista_recomendacoes">
-        <h3>Cliente: {{Cliente.nome}}</h3>
-        <p><strong>Exame Físico:</strong> {{exameFisico}}</p>
-        <p><strong>Diagnóstico:</strong> {{diagnostico}}</p>
-        <p><strong>Tratamento:</strong> {{tratamento}}</p>
-        <p><strong>Observações:</strong> {{observacoes}}</p>
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header bg-info text-white">
+          Cliente: {{Cliente.nome}}
+        </div>
+        <div class="card-body">
+          <p><strong>Exame Físico:</strong> {{exameFisico}}</p>
+          <p><strong>Diagnóstico:</strong> {{diagnostico}}</p>
+          <p><strong>Tratamento:</strong> {{tratamento}}</p>
+          <p><strong>Observações:</strong> {{observacoes}}</p>
+        </div>
+        <div class="card-footer text-muted text-end">
+          Dentista: {{Dentistum.nome}}
+        </div>
+      </div>
     </div>
     {{/each}}
+  </div>
 </div>
+
 
 </div>
 

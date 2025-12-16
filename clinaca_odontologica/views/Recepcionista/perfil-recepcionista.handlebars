@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../css/recepcionista/perfil.css">
+<link rel="stylesheet" href="../../css/perfil.css">
 
 <nav>
     <a href="/PaginaInicialRecepcionista">Tela Inicial</a>
@@ -6,54 +6,68 @@
 </nav>
 
 <main>
+    <!-- Menu de abas -->
     <ul class="ul-botoes-perfil">
         <li><a id="botaoInformacoes">Informações Pessoais</a></li>
         <li><a id="botaoContatos">Contatos</a></li>
         <li><a id="botaoSenha">Senha</a></li>
     </ul>
 
-   
+    <!-- ================= INFORMAÇÕES PESSOAIS ================= -->
     <div id="informacoesPessoais">
-        <form action="/EditarInformacoesPessoaisRecepcionista" method="post">
-            <label>CPF:</label>
-            <input type="text" name="cpf" value="{{Recepcionista.cpf}}">
-            
-            <label>Endereço:</label>
-            <input type="text" name="endereco" value="{{Recepcionista.endereco}}">
-            
-            <label>Data de Nascimento:</label>
-            <input type="date" name="data_nascimento" value="{{Recepcionista.data_nascimento}}">
-            
-            <label>Sexo:</label>
-            <input type="text" name="sexo" value="{{Recepcionista.sexo}}">
-            
-            <label>Nome:</label>
-            <input type="text" name="nome" value="{{Recepcionista.nome}}">
-            
-            <button type="submit">Editar Informações Pessoais</button>
-        </form>
+        <div class="caixaEditarInformacoes">
+            <form action="/EditarInformacoesPessoaisRecepcionista" method="post">
+                <label>CPF:</label>
+                <input type="text" name="cpf" value="{{Recepcionista.cpf}}">
+                
+                <label>Endereço:</label>
+                <input type="text" name="endereco" value="{{Recepcionista.endereco}}">
+                
+                <label>Data de Nascimento:</label>
+                <input type="date" name="data_nascimento" value="{{Recepcionista.data_nascimento}}">
+                
+                <label>Sexo:</label>
+                <input type="text" name="sexo" value="{{Recepcionista.sexo}}">
+                
+                <label>Nome:</label>
+                <input type="text" name="nome" value="{{Recepcionista.nome}}">
+                
+                <button type="submit" class="botao_servico">Editar Informações Pessoais</button>
+            </form>
+        </div>
     </div>
 
+    <br>
+    <hr>
 
+    <!-- ================= CONTATOS ================= -->
     <div id="contatos">
-        <form action="/EditarContatosRecepcionista" method="post">
-            <label>Email:</label>
-            <input type="email" name="email" value="{{Recepcionista.email}}">
-            
-            <label>Telefone:</label>
-            <input type="number" name="telefone" value="{{Recepcionista.telefone}}">
-            
-            <button type="submit">Editar Contatos</button>
-        </form>
+        <div class="caixaEditarcontatos">
+            <form action="/EditarContatosRecepcionista" method="post">
+                <label>Email:</label>
+                <input type="email" name="email" value="{{Recepcionista.email}}">
+                
+                <label>Telefone:</label>
+                <input type="number" name="telefone" value="{{Recepcionista.telefone}}">
+                
+                <button type="submit" class="botao_servico">Editar Contatos</button>
+            </form>
+        </div>
     </div>
 
+    <br>
+    <hr>
+
+    <!-- ================= SENHA ================= -->
     <div id="senha">
-        <form action="/EditarSenhaRecepcionista" method="post">
-            <label>Nova Senha:</label>
-            <input type="password" name="senha" placeholder="Digite sua nova senha">
-            
-            <button type="submit">Alterar Senha</button>
-        </form>
+        <div class="EditarSenha">
+            <form action="/EditarSenhaRecepcionista" method="post">
+                <label>Nova Senha:</label>
+                <input type="password" name="senha" placeholder="Digite sua nova senha" required>
+                
+                <button type="submit" class="botao_servico">Alterar Senha</button>
+            </form>
+        </div>
     </div>
 </main>
 

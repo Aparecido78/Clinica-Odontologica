@@ -1,92 +1,31 @@
-<style>
-
-.alert-box {
-    position: fixed;      /* flutua na tela */
-    top: 70px;            /* ajustar conforme altura do navbar */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1050;        /* acima de quase tudo */
-    max-width: 500px;
-    width: 90%;
-}
-
-
-/* Tipos de alerta */
-.alert-success {
-    background-color: rgb(20, 140, 200);
-}
-
-.alert-error {
-    background-color: rgb(220, 53, 69);
-}
-
-/* Ícones */
-.alert-success::before {
-    content: "✔";
-    font-size: 20px;
-}
-
-.alert-error::before {
-    content: "✖";
-    font-size: 20px;
-}
-
-/* Botão de fechar */
-.close-btn {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    transition: color 0.3s;
-}
-
-.close-btn:hover {
-    color: #ddd;
-}
-
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-
-@media (max-width: 500px) {
-    .alert-box {
-        padding-left: 15px;
-        padding-right: 40px;
-    }
-}
-</style>
-
 {{#if errorMessages}}
   {{#each errorMessages}}
-    <div class="alert-box alert-error" id="error-{{@index}}">
-        {{this}}
-        <span class="close-btn" onclick="fecharMensagem('error-{{@index}}')">&times;</span>
+    <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x w-75 mt-5" role="alert" id="error-{{@index}}">
+      {{this}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   {{/each}}
 {{/if}}
 
 {{#if successMessages}}
   {{#each successMessages}}
-    <div class="alert-box alert-success" id="success-{{@index}}">
-        {{this}}
-        <span class="close-btn" onclick="fecharMensagem('success-{{@index}}')">&times;</span>
+    <div class="alert alert-primary alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x w-75 mt-5" role="alert" id="success-{{@index}}">
+      {{this}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   {{/each}}
 {{/if}}
 
 <script>
-function fecharMensagem(id){
-    const elemento = document.getElementById(id);
-    if(elemento){
-        elemento.style.opacity = '0';
-        setTimeout(() => elemento.style.display = 'none', 300);
-    }
-}
+// Auto-fechar mensagens após 4 segundos
+document.addEventListener("DOMContentLoaded", () => {
+    const mensagens = document.querySelectorAll(".alert");
+    mensagens.forEach(msg => {
+        setTimeout(() => {
+            // Bootstrap 5 fade out
+            const bsAlert = bootstrap.Alert.getOrCreateInstance(msg);
+            bsAlert.close();
+        }, 4000);
+    });
+});
 </script>
