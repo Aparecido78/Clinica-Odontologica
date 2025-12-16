@@ -1,77 +1,192 @@
-<h1>Cliente Pesquisado</h1>
+<style>
+/* Geral */
+body {
+  background-color: #f8f9fa;
+  padding: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
+h1, h2 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
 
-{{#if ClienteEncontrado}}
-    <p>Nome: {{ClienteEncontrado.nome}}</p>
-    <p>Email: {{ClienteEncontrado.email}}</p>
+/* Cliente pesquisado */
+.cliente-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cliente-card p {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+/* Ficha clínica */
+.ficha-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 40px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.ficha-card p {
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.ficha-card strong {
+  color: #0d6efd;
+}
+
+/* Separadores */
+.ficha-card hr {
+  margin: 25px 0;
+  border-top: 2px dashed #dee2e6;
+}
+
+/* Formulário */
+.form-recomendacao {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 40px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.form-recomendacao label {
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
+}
+
+.form-recomendacao textarea {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Botões */
+.btn-clinica {
+  background-color: #0d6efd;
+  color: #fff;
+  border-radius: 30px;
+  padding: 8px 25px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-clinica:hover {
+  background-color: #0b5ed7;
+}
+
+/* Aviso */
+.alert-clinica {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+</style>
+
+<!-- CLIENTE PESQUISADO -->
+<div class="cliente-card">
+  <h1>Cliente Pesquisado</h1>
+
+  {{#if ClienteEncontrado}}
+    <p><strong>Nome:</strong> {{ClienteEncontrado.nome}}</p>
+    <p><strong>Email:</strong> {{ClienteEncontrado.email}}</p>
+
     <form action="/FichaClinicaCliente" method="post">
-        <input type="hidden" name="ClienteId" value="{{ ClienteEncontrado.id }}">
-        <button type="submit">Ficha Clinica do Cliente</button>
+      <input type="hidden" name="ClienteId" value="{{ ClienteEncontrado.id }}">
+      <button class="btn-clinica" type="submit">
+        Ficha Clínica do Cliente
+      </button>
     </form>
-{{/if}}
-<div id="fichaclinica"> 
-{{#if FichaCliente}}
-    <h2>Ficha Clínica</h2>
-    {{#each FichaCliente}}
-        <div class="container border border-2 m-3 p-3 rounded-4">
-            <p class="form-control"><strong>{{Cliente.nome}}</strong></p>
-            <p class="form-control"><strong>Alergias:</strong> {{alergias}}</p>
-            <p class="form-control"><strong>Medicamentos de Uso Contínuo:</strong> {{medicamentosUsoContinuo}}</p>
-            <p><strong>Doenças Pré-existentes:</strong> {{doencasPreExistentes}}</p>
-            <p><strong>Histórico Familiar:</strong> {{historicoFamiliar}}</p>
-            <p><strong>Cirurgias Anteriores:</strong> {{cirurgiasAnteriores}}</p>
-            <p><strong>Queixas:</strong> {{queixas}}</p>
-            <p><strong>Pressão Arterial:</strong> {{pressaoArterial}}</p>
-            <p><strong>Frequência Cardíaca:</strong> {{frequenciaCardiaca}}</p>
-            <p><strong>Peso:</strong> {{peso}} kg</p>
-            <p><strong>Altura:</strong> {{altura}} m</p>
-            <hr>
-            <p><strong>Higiene Bucal:</strong> {{higieneBucal}}</p>
-            <p><strong>Cáries:</strong> {{caries}}</p>
-            <p><strong>Gengiva Inflamada:</strong> {{#if gengivaInflamada}}Sim{{else}}Não{{/if}}</p>
-            <p><strong>Sensibilidade nos Dentes:</strong> {{sensibilidadeDentes}}</p>
-            <p><strong>Restaurações:</strong> {{restauracoes}}</p>
-            <p><strong>Dentes Ausentes:</strong> {{dentesAusentes}}</p>
-            <p><strong>Próteses:</strong> {{proteses}}</p>
-            <p><strong>Bruxismo:</strong> {{#if bruxismo}}Sim{{else}}Não{{/if}}</p>
-            <p><strong>Tratamento Ortodôntico:</strong> {{tratamentoOrtodontico}}</p>
-            <p><strong>Hábitos:</strong> {{habitos}}</p>
-            <p><strong>Exame Oral Geral:</strong> {{exameOralGeral}}</p>
-            <p><strong>Radiografias Recentes:</strong> {{radiografiasRecentes}}</p>
-            <p><strong>Observações Extras:</strong> {{observacoesExtras}}</p>
-        </div>
-        <h1>Formulário de Recomendações para o Cliente</h1>
-        <form action="/RecomendacoesDentista" method="POST">
-          
-            <input type="hidden" name="ClienteId" value="{{Cliente.id}}">
-           
-            <input type="hidden" name="FichaClinicaId" value="{{id}}">
-            
-            <label>Exame Físico:</label><br>
-            <textarea name="exameFisico" required></textarea>
-
-            <label>Diagnóstico:</label><br>
-            <textarea name="diagnostico" required></textarea>
-
-            <label>Tratamento:</label><br>
-            <textarea name="tratamento" required></textarea>
-
-            <label>Observações:</label><br>
-            <textarea name="observacoes"></textarea>
-
-            <button type="submit">Enviar Recomendações</button>
-        </form>
-
-
-    {{/each}}
-
-    {{else}}
-    <h2>Ficha Clínica</h2>
-    <p style="color: red; font-weight: bold;">
-        Este cliente ainda não possui ficha clínica cadastrada.
-    </p>
-{{/if}}
+  {{/if}}
 </div>
 
+<!-- FICHA CLÍNICA -->
+<div id="fichaclinica">
+{{#if FichaCliente}}
+  <h2>Ficha Clínica</h2>
 
-    
+  {{#each FichaCliente}}
+    <div class="ficha-card">
+      <p><strong>{{Cliente.nome}}</strong></p>
+
+      <p><strong>Alergias:</strong> {{alergias}}</p>
+      <p><strong>Medicamentos:</strong> {{medicamentosUsoContinuo}}</p>
+      <p><strong>Doenças Pré-existentes:</strong> {{doencasPreExistentes}}</p>
+      <p><strong>Histórico Familiar:</strong> {{historicoFamiliar}}</p>
+      <p><strong>Cirurgias Anteriores:</strong> {{cirurgiasAnteriores}}</p>
+      <p><strong>Queixas:</strong> {{queixas}}</p>
+
+      <hr>
+
+      <p><strong>Pressão Arterial:</strong> {{pressaoArterial}}</p>
+      <p><strong>Frequência Cardíaca:</strong> {{frequenciaCardiaca}}</p>
+      <p><strong>Peso:</strong> {{peso}} kg</p>
+      <p><strong>Altura:</strong> {{altura}} m</p>
+
+      <hr>
+
+      <p><strong>Higiene Bucal:</strong> {{higieneBucal}}</p>
+      <p><strong>Cáries:</strong> {{caries}}</p>
+      <p><strong>Gengiva Inflamada:</strong> {{#if gengivaInflamada}}Sim{{else}}Não{{/if}}</p>
+      <p><strong>Sensibilidade nos Dentes:</strong> {{sensibilidadeDentes}}</p>
+      <p><strong>Restaurações:</strong> {{restauracoes}}</p>
+      <p><strong>Dentes Ausentes:</strong> {{dentesAusentes}}</p>
+      <p><strong>Próteses:</strong> {{proteses}}</p>
+      <p><strong>Bruxismo:</strong> {{#if bruxismo}}Sim{{else}}Não{{/if}}</p>
+      <p><strong>Tratamento Ortodôntico:</strong> {{tratamentoOrtodontico}}</p>
+      <p><strong>Hábitos:</strong> {{habitos}}</p>
+      <p><strong>Exame Oral Geral:</strong> {{exameOralGeral}}</p>
+      <p><strong>Radiografias Recentes:</strong> {{radiografiasRecentes}}</p>
+      <p><strong>Observações Extras:</strong> {{observacoesExtras}}</p>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <div class="form-recomendacao">
+      <h2>Formulário de Recomendações</h2>
+
+      <form action="/RecomendacoesDentista" method="POST">
+        <input type="hidden" name="ClienteId" value="{{Cliente.id}}">
+        <input type="hidden" name="FichaClinicaId" value="{{id}}">
+
+        <label>Exame Físico</label>
+        <textarea name="exameFisico" required></textarea>
+
+        <label>Diagnóstico</label>
+        <textarea name="diagnostico" required></textarea>
+
+        <label>Tratamento</label>
+        <textarea name="tratamento" required></textarea>
+
+        <label>Observações</label>
+        <textarea name="observacoes"></textarea>
+
+        <button class="btn-clinica" type="submit">
+          Enviar Recomendações
+        </button>
+      </form>
+    </div>
+  {{/each}}
+
+{{else}}
+  <h2>Ficha Clínica</h2>
+  <div class="alert-clinica">
+    Este cliente ainda não possui ficha clínica cadastrada.
+  </div>
+{{/if}}
+</div>
