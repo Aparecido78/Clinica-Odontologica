@@ -13,11 +13,14 @@ module.exports = {
             });
 
             res.render("Dentista/perfil-dentista", {
+                 error: req.flash("error")[0],
+                success: req.flash("success")[0],
                 DentistaEncontrado: DentistaEncontrado.get({plain:true})
+               
             });
 
         } catch (erro) {
-            console.log("Erro ao carregar perfil do dentista:", erro);
+          
             res.redirect("/PaginaInicialDentista");
         }
     },
@@ -36,7 +39,7 @@ module.exports = {
             res.redirect("/PerfilDentista");
 
         } catch (err) {
-            console.log("Erro ao editar contatos do dentista:", err);
+            
             req.flash("error", "Erro ao editar contatos");
             res.redirect("/PerfilDentista");
         }
@@ -56,7 +59,7 @@ module.exports = {
             res.redirect("/PerfilDentista");
 
         } catch (err) {
-            console.log("Erro ao editar informações pessoais:", err);
+          
             req.flash("error", "Erro ao editar informações pessoais");
             res.redirect("/PerfilDentista");
         }
@@ -81,7 +84,7 @@ module.exports = {
             res.redirect("/PerfilDentista");
 
         } catch (err) {
-            console.log("Erro ao editar senha do dentista:", err);
+           
             req.flash("error", "Erro ao alterar senha");
             res.redirect("/PerfilDentista");
         }

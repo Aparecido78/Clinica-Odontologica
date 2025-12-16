@@ -55,19 +55,19 @@ async CadastroDentista(req,res){
     try{
         const email_existe = await Dentista.findOne({where:{email:email}})
         if(email_existe){
-            console.log("email invalido, escolha outro email");
+           
             req.flash("error","email invalido, escolha outro email")
             return res.redirect("/PaginaInicialAdmin")
 
         }
         await Dentista.create({nome, email, senha:hash,telefone, cpf, endereco,data_nascimento,sexo})
         
-        console.log(" cadastrado com sucesso")
+       
         req.flash("success","Dentista cadastrado com sucesso")
         res.redirect("/PaginaInicialAdmin")
     }catch(err){
 
-        console.log("erro ao fazer login",err)
+      
         req.flash("erro","erro ao cadastrar Dentista")
         res.redirect("/PaginaCadastroDentista")
     }
@@ -88,7 +88,7 @@ async RecomendacoesDentista(req,res){
 
 
         if(AnotacoesDentistaExiste.length > 0){
-            console.log("Erro, esse cliente ja possui uma anotação")
+           
             req.flash("erro","Erro, esse cliente ja possui uma anotação")
             return res.redirect("/PaginaInicialDentista")
 
@@ -99,13 +99,13 @@ async RecomendacoesDentista(req,res){
         observacoes, FichaClinicaId, ClienteId, DentistumId
     })
 
-    console.log("Recomendações cadastradas com sucesso")
+   
     req.flash("success","Recomendações cadastradas com sucesso")
     res.redirect("PaginaInicialDentista")
 
 
     }catch(err){
-        console.log("Erro ao cadastrar recomendações pro cliente",err)
+      
         req.flash("erro","Erro ao cadastrar recomendações pro cliente")
         res.redirect("PaginaInicialDentista")
     }
@@ -140,7 +140,7 @@ async MostrarRecomencacoesDentista(req,res){
         })
 
     }catch(err){
-        console.log("Erro ao enviar recomendações",err)
+      
         req.flash("erro","Erro ao enviar recomendações")
         res.redirect("/PaginaInicialDentista")
     }
@@ -150,7 +150,9 @@ async MostrarRecomencacoesDentista(req,res){
 async ListaDentista(req,res){
      const ListaDentista = await Dentista.findAll({ raw: true })
      res.render("Admin/Dentista/lista-dentista-cadastrados",{
-        ListaDentista:ListaDentista
+        ListaDentista:ListaDentista,
+        error: req.flash("error")[0],
+        success: req.flash("success")[0]
      })
 
 }
