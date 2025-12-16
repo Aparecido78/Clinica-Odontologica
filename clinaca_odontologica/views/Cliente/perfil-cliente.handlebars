@@ -2,16 +2,16 @@
 <link rel="stylesheet" href="../../css/perfil.css">
 
 <main>
-    <!-- Menu de abas -->
-    <ul class="ul">
-        <li><a id="ButaoEditarInformacoes">Editar Informações</a></li>
-        <li><a id="ButaoEditarContatos">Editar Contatos</a></li>
-        <li><a id="ButaoSenha">Senha</a></li>
+
+    <ul>
+        <button id="ButaoEditarInformacoes">Editar Informações</button>
+        <button id="ButaoEditarContatos">Editar Contatos</button>
+        <button id="ButaoSenha">Senha</button>
     </ul>
 
-    <!-- ================= ALTERAR SENHA ================= -->
+  
     <div id="Senha"> 
-        <div class="EditarSenha">
+      
             <h2>Alterar senha</h2>
             <form action="/EditarSenhaCliente" method="post">
                 <label>Nova Senha:</label>
@@ -19,14 +19,14 @@
                 <br>
                 <button class="botao_servico" type="submit">Alterar Senha</button>
             </form>
-        </div>
+       
     </div>
     <br>
     <hr>
 
-    <!-- ================= EDITAR INFORMAÇÕES PESSOAIS ================= -->
+ 
     <div id="EditarInformacoesPessoaisCliente">
-        <div class="caixaEditarInformacoes">
+       
             <form action="/EditarInformacoesPessoaisCliente" method="post">
                 <label>CPF:</label>
                 <input type="text" name="cpf" value="{{ClienteEncontrado.cpf}}">
@@ -45,14 +45,14 @@
                 <br>
                 <button type="submit" class="butao_editar_informacoes">Editar Informações Pessoais</button>
             </form>
-        </div>
+      
     </div>
     <br>
     <hr>
 
-    <!-- ================= EDITAR CONTATOS ================= -->
+
     <div id="EditarContatosCliente">
-        <div class="caixaEditarcontatos">
+      
             <h1>Editar Contatos</h1>
             <form action="/EditarContatosCliente" method="post">
                 <label>Email:</label>
@@ -62,7 +62,7 @@
                 <input type="number" name="telefone" value="{{ClienteEncontrado.telefone}}">
                 <button type="submit" class="botao_servico">Editar Contatos</button>
             </form>
-        </div>
+    
     </div>
 </main>
 

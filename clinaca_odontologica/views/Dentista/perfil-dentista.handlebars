@@ -3,15 +3,15 @@
 
 <main>
     <!-- Menu de abas -->
-    <ul class="ul">
-        <li><a id="ButaoEditarInformacoes">Editar Informações</a></li>
-        <li><a id="ButaoEditarContatos">Editar Contatos</a></li>
-        <li><a id="ButaoSenha">Senha</a></li>
+    <ul>
+        <button id="ButaoEditarInformacoes">Editar Informações</button>
+        <button id="ButaoEditarContatos">Editar Contatos</button>
+        <button id="ButaoSenha">Senha</button>
     </ul>
 
-    <!-- ================= ALTERAR SENHA ================= -->
+  
     <div id="Senha">
-        <div id="EditarSenhaDentista" class="EditarSenha">
+      
             <h2>Alterar Senha</h2>
             <form action="/EditarSenhaDentista" method="post">
                 <label>Nova Senha:</label>
@@ -19,14 +19,14 @@
                 <br>
                 <button class="botao_servico" type="submit">Alterar Senha</button>
             </form>
-        </div>
+       
     </div>
     <br>
     <hr>
 
-    <!-- ================= EDITAR INFORMAÇÕES PESSOAIS ================= -->
+>
     <div id="EditarInformacoesPessoaisDentista">
-        <div class="caixaEditarInformacoes">
+     
             <form action="/EditarInformacoesPessoaisDentista" method="post">
                 <label>CPF:</label>
                 <input type="text" name="cpf" value="{{DentistaEncontrado.cpf}}">
@@ -45,14 +45,14 @@
                 <br>
                 <button type="submit" class="butao_editar_informacoes">Editar Informações Pessoais</button>
             </form>
-        </div>
+     
     </div>
     <br>
     <hr>
 
-    <!-- ================= EDITAR CONTATOS ================= -->
+
     <div id="EditarContatosDentista">
-        <div class="caixaEditarcontatos">
+      
             <h2>Editar Contatos</h2>
             <form action="/EditarContatosDentista" method="post">
                 <label>Email:</label>
@@ -63,7 +63,7 @@
                 <br>
                 <button type="submit" class="botao_servico">Editar Contatos</button>
             </form>
-        </div>
+
     </div>
 </main>
 
