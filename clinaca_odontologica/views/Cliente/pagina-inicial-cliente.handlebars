@@ -1,120 +1,44 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Área do Cliente</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <span class="navbar-brand fw-bold">Área do Cliente</span>
 
-    h1, h2 {
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    /* MENU */
-    .header {
-      background: #212529;
-      padding: 15px 0;
-    }
-
-    .menu a {
-      color: white;
-      text-decoration: none;
-      margin-right: 15px;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    .menu a:hover {
-      text-decoration: underline;
-    }
-
-    /* SEÇÕES */
-    #servicos,
-    #agendamentos,
-    #fichaClinica,
-    #recomendacoes {
-      display: none;
-      margin-top: 40px;
-    }
-
-    /* CARDS */
-    .card-custom {
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      margin-bottom: 25px;
-    }
-
-    .card-custom strong {
-      color: #0d6efd;
-    }
-
-    /* BOTÕES */
-    .btn-clinica {
-      background-color: #0d6efd;
-      color: white;
-      border-radius: 30px;
-      padding: 8px 25px;
-      font-weight: 500;
-      border: none;
-    }
-
-    .btn-clinica:hover {
-      background-color: #0b5ed7;
-    }
-
-    textarea {
-      resize: vertical;
-    }
-  </style>
-</head>
-
-<body>
-
-<header class="header">
-  <div class="container d-flex justify-content-between align-items-center">
-    <h4 class="text-white m-0">Área do Cliente</h4>
-
-    <div class="menu">
-      <a id="butao_servicos">Serviços</a>
-      <a id="butao_agendamento">Agendamentos</a>
-      <a id="butao_fichaClinica">Ficha Clínica</a>
-      <a id="butao_recomendacoes">Recomendações</a>
-      <a href="/PerfilCliente">Perfil</a>
-      <a href="/logout" class="text-danger fw-bold">Sair</a>
+    <div class="d-flex gap-3">
+      <a class="nav-link text-white" id="butao_servicos">Serviços</a>
+      <a class="nav-link text-white" id="butao_agendamento">Agendamentos</a>
+      <a class="nav-link text-white" id="butao_fichaClinica">Ficha Clínica</a>
+      <a class="nav-link text-white" id="butao_recomendacoes">Recomendações</a>
+      <a class="nav-link text-white" href="/PerfilCliente">Perfil</a>
+      <a class="nav-link text-danger fw-bold" href="/logout">Sair</a>
     </div>
   </div>
-</header>
+</nav>
 
-<div class="container">
+<div class="container my-4">
 
 <!-- ================= SERVIÇOS ================= -->
 <div id="servicos">
-  <h1>Serviços Disponíveis</h1>
+  <h2 class="mb-4">Serviços Disponíveis</h2>
 
   <div class="row g-4">
     {{#each servicos}}
     <div class="col-md-4">
-      <div class="card shadow-sm h-100">
+      <div class="card h-100 shadow-sm">
         <img src="/upload/{{foto}}" class="card-img-top">
 
         <div class="card-body">
-          <h5>{{nome}}</h5>
-          <p>{{descricao}}</p>
+          <h5 class="card-title">{{nome}}</h5>
+          <p class="card-text">{{descricao}}</p>
           <p><strong>Duração:</strong> {{duracao}}</p>
           <p class="fw-bold text-success">R$ {{valor}}</p>
 
           <form action="/TelaMarcarConsulta" method="post">
             <input type="hidden" name="servicoId" value="{{id}}">
-            <button class="btn btn-primary w-100">Marcar Consulta</button>
+            <button class="btn btn-primary w-100">
+              Marcar Consulta
+            </button>
           </form>
         </div>
       </div>
@@ -124,21 +48,23 @@
 </div>
 
 <!-- ================= AGENDAMENTOS ================= -->
-<div id="agendamentos">
-  <h1>Agendamentos</h1>
+<div id="agendamentos" class="mt-5">
+  <h2 class="mb-4">Agendamentos</h2>
 
   {{#each agendamentos}}
-  <div class="card-custom">
-    <p><strong>Paciente:</strong> {{Cliente.nome}}</p>
-    <p><strong>Serviço:</strong> {{Servico.nome}}</p>
-    <p>{{data}} às {{hora}}</p>
+  <div class="card mb-3 shadow-sm">
+    <div class="card-body">
+      <p><strong>Paciente:</strong> {{Cliente.nome}}</p>
+      <p><strong>Serviço:</strong> {{Servico.nome}}</p>
+      <p><strong>Data:</strong> {{data}} às {{hora}}</p>
+    </div>
   </div>
   {{/each}}
 </div>
 
 <!-- ================= FICHA CLÍNICA ================= -->
-<div id="fichaClinica">
-  <h1>Ficha Clínica do Paciente</h1>
+<div id="fichaClinica" class="mt-5">
+  <h2 class="mb-4">Ficha Clínica do Paciente</h2>
 
   <form action="/SalvarFichaClinica" method="post" class="row g-3">
 
@@ -148,7 +74,7 @@
     </div>
 
     <div class="col-md-6">
-      <label class="form-label">Medicamentos</label>
+      <label class="form-label">Medicamentos de Uso Contínuo</label>
       <textarea class="form-control" name="medicamentosUsoContinuo"></textarea>
     </div>
 
@@ -168,59 +94,41 @@
     </div>
 
     <div class="col-md-4">
-      <label class="form-label">Peso</label>
+      <label class="form-label">Peso (kg)</label>
       <input class="form-control" type="number" step="0.1" name="peso">
     </div>
 
     <div class="col-md-4">
-      <label class="form-label">Altura</label>
+      <label class="form-label">Altura (m)</label>
       <input class="form-control" type="number" step="0.01" name="altura">
     </div>
 
     <div class="col-12">
-      <button class="btn-clinica w-100 mt-3">Salvar Ficha Clínica</button>
+      <button class="btn btn-primary w-100 mt-3">
+        Salvar Ficha Clínica
+      </button>
     </div>
   </form>
 </div>
 
 <!-- ================= RECOMENDAÇÕES ================= -->
-<div id="recomendacoes">
-  <h1>Recomendações do Dentista</h1>
+<div id="recomendacoes" class="mt-5">
+  <h2 class="mb-4">Recomendações do Dentista</h2>
 
   {{#each RecomendaçõesDentistaCliente}}
-  <div class="card-custom">
-    <p><strong>Exame Físico:</strong> {{exameFisico}}</p>
-    <p><strong>Diagnóstico:</strong> {{diagnostico}}</p>
-    <p><strong>Tratamento:</strong> {{tratamento}}</p>
-    <p><strong>Observações:</strong> {{observacoes}}</p>
-    <hr>
-    <p class="text-muted">Dentista: {{Dentistum.nome}}</p>
+  <div class="card mb-3 shadow-sm">
+    <div class="card-body">
+      <p><strong>Exame Físico:</strong> {{exameFisico}}</p>
+      <p><strong>Diagnóstico:</strong> {{diagnostico}}</p>
+      <p><strong>Tratamento:</strong> {{tratamento}}</p>
+      <p><strong>Observações:</strong> {{observacoes}}</p>
+      <hr>
+      <p class="text-muted mb-0">
+        Dentista: {{Dentistum.nome}}
+      </p>
+    </div>
   </div>
   {{/each}}
 </div>
 
 </div>
-
-<!-- Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- JS simples para alternar telas -->
-<script>
-  const sections = ["servicos","agendamentos","fichaClinica","recomendacoes"]
-
-  function show(id){
-    sections.forEach(s => {
-      document.getElementById(s).style.display = s === id ? "block" : "none"
-    })
-  }
-
-  document.getElementById("butao_servicos").onclick = () => show("servicos")
-  document.getElementById("butao_agendamento").onclick = () => show("agendamentos")
-  document.getElementById("butao_fichaClinica").onclick = () => show("fichaClinica")
-  document.getElementById("butao_recomendacoes").onclick = () => show("recomendacoes")
-
-  show("servicos")
-</script>
-
-</body>
-</html>
