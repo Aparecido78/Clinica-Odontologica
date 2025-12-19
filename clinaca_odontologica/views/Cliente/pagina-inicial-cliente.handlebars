@@ -1,17 +1,19 @@
 
-<link rel="stylesheet" href="../../css/clientes/tela_inicial.css">
+<link rel="stylesheet" href="/css/clientes/tela_inicial.css">
+
+
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
     <span class="navbar-brand fw-bold">Área do Cliente</span>
 
-    <div class="d-flex gap-3">
-      <a class="nav-link text-white" id="butao_servicos">Serviços</a>
-      <a class="nav-link text-white" id="butao_agendamento">Agendamentos</a>
-      <a class="nav-link text-white" id="butao_fichaClinica">Ficha Clínica</a>
-      <a class="nav-link text-white" id="butao_recomendacoes">Recomendações</a>
-      <a class="nav-link text-white" href="/PerfilCliente">Perfil</a>
-      <a class="nav-link text-danger fw-bold" href="/logout">Sair</a>
+    <div class="d-flex gap-3 flex-wrap">
+      <a class="nav-link text-white nav-hover" id="butao_servicos">Serviços</a>
+      <a class="nav-link text-white nav-hover" id="butao_agendamento">Agendamentos</a>
+      <a class="nav-link text-white nav-hover" id="butao_fichaClinica">Ficha Clínica</a>
+      <a class="nav-link text-white nav-hover" id="butao_recomendacoes">Recomendações</a>
+      <a class="nav-link text-white nav-hover" href="/PerfilCliente">Perfil</a>
+      <a class="nav-link text-danger fw-bold nav-hover" href="/logout">Sair</a>
     </div>
   </div>
 </nav>
@@ -75,160 +77,172 @@
   </div>
 </div>
 
+<!-- ================= FICHA CLÍNICA ================= -->
+<div id="fichaClinica">
 
-<div id="fichaClinica" class="container my-5">
-  <h2 class="mb-4">Ficha Clínica do Paciente</h2>
-
-  <form action="/SalvarFichaClinica" method="post" class="row g-3">
-
-    <!-- Histórico Médico -->
-    <div class="col-md-6">
-      <label class="form-label">Alergias</label>
-      <textarea class="form-control" name="alergias"></textarea>
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Medicamentos de Uso Contínuo</label>
-      <textarea class="form-control" name="medicamentosUsoContinuo"></textarea>
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Doenças Pré-existentes</label>
-      <textarea class="form-control" name="doencasPreExistentes"></textarea>
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Histórico Familiar</label>
-      <textarea class="form-control" name="historicoFamiliar"></textarea>
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Cirurgias Anteriores</label>
-      <textarea class="form-control" name="cirurgiasAnteriores"></textarea>
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Queixas do Paciente</label>
-      <textarea class="form-control" name="queixas"></textarea>
-    </div>
-
-    <!-- Sinais Vitais -->
-    <div class="col-md-4">
-      <label class="form-label">Pressão Arterial</label>
-      <input type="text" class="form-control" name="pressaoArterial">
-    </div>
-
-    <div class="col-md-4">
-      <label class="form-label">Frequência Cardíaca</label>
-      <input type="number" class="form-control" name="frequenciaCardiaca">
-    </div>
-
-    <div class="col-md-2">
-      <label class="form-label">Peso (kg)</label>
-      <input type="number" step="0.1" class="form-control" name="peso">
-    </div>
-
-    <div class="col-md-2">
-      <label class="form-label">Altura (m)</label>
-      <input type="number" step="0.01" class="form-control" name="altura">
-    </div>
-
-    <!-- Avaliação Oral -->
-    <div class="col-md-6">
-      <label class="form-label">Higiene Bucal</label>
-      <input type="text" class="form-control" name="higieneBucal">
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Cáries</label>
-      <textarea class="form-control" name="cáries"></textarea>
-    </div>
-
-    <div class="col-md-4">
-      <div class="form-check mt-3">
-        <input class="form-check-input" type="checkbox" name="gengivaInflamada" value="true" id="gengivaInflamada">
-        <label class="form-check-label" for="gengivaInflamada">Gengiva Inflamada</label>
+<form action="/SalvarFichaClinica" method="POST">
+  <!-- Histórico Médico -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header bg-primary text-white fw-bold" >Histórico Médico</div>
+    <div class="card-body row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Alergias</label>
+        <textarea class="form-control" name="alergias" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.alergias}}{{/if}}</textarea>
       </div>
-    </div>
 
-    <div class="col-md-4">
-      <label class="form-label">Sensibilidade nos Dentes</label>
-      <textarea class="form-control" name="sensibilidadeDentes"></textarea>
-    </div>
-
-    <div class="col-md-4">
-      <label class="form-label">Restaurações</label>
-      <textarea class="form-control" name="restaurações"></textarea>
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Dentes Ausentes</label>
-      <textarea class="form-control" name="dentesAusentes"></textarea>
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Próteses</label>
-      <input type="text" class="form-control" name="próteses">
-    </div>
-
-    <div class="col-md-6">
-      <div class="form-check mt-3">
-        <input class="form-check-input" type="checkbox" name="bruxismo" value="true" id="bruxismo">
-        <label class="form-check-label" for="bruxismo">Bruxismo</label>
+      <div class="col-md-6">
+        <label class="form-label">Medicamentos de Uso Contínuo</label>
+        <textarea class="form-control" name="medicamentosUsoContinuo" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.medicamentosUsoContinuo}}{{/if}}</textarea>
       </div>
-    </div>
 
-    <div class="col-md-6">
-      <label class="form-label">Tratamento Ortodôntico</label>
-      <input type="text" class="form-control" name="tratamentoOrtodontico">
-    </div>
+      <div class="col-md-6">
+        <label class="form-label">Doenças Pré-existentes</label>
+        <textarea class="form-control" name="doencasPreExistentes" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.doencasPreExistentes}}{{/if}}</textarea>
+      </div>
 
-    <div class="col-md-12">
-      <label class="form-label">Hábitos</label>
-      <textarea class="form-control" name="hábitos"></textarea>
-    </div>
+      <div class="col-md-6">
+        <label class="form-label">Histórico Familiar</label>
+        <textarea class="form-control" name="historicoFamiliar" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.historicoFamiliar}}{{/if}}</textarea>
+      </div>
 
-    <div class="col-md-12">
-      <label class="form-label">Exame Oral Geral</label>
-      <textarea class="form-control" name="exameOralGeral"></textarea>
-    </div>
+      <div class="col-md-6">
+        <label class="form-label">Cirurgias Anteriores</label>
+        <textarea class="form-control" name="cirurgiasAnteriores" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.cirurgiasAnteriores}}{{/if}}</textarea>
+      </div>
 
-    <div class="col-md-12">
-      <label class="form-label">Radiografias Recentes</label>
-      <textarea class="form-control" name="radiografiasRecentes"></textarea>
-    </div>
-
-    <div class="col-md-12">
-      <label class="form-label">Observações Extras</label>
-      <textarea class="form-control" name="observacoesExtras"></textarea>
-    </div>
-
-    <!-- Botão de salvar -->
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary w-100 mt-3">Salvar Ficha Clínica</button>
-    </div>
-  </form>
-</div>
-
-<!-- ================= RECOMENDAÇÕES ================= -->
-<div id="recomendacoes" class="mt-5">
-  <h2 class="mb-4">Recomendações do Dentista</h2>
-
-  {{#each RecomendaçõesDentistaCliente}}
-  <div class="card mb-3 shadow-sm">
-    <div class="card-body">
-      <p><strong>Exame Físico:</strong> {{exameFisico}}</p>
-      <p><strong>Diagnóstico:</strong> {{diagnostico}}</p>
-      <p><strong>Tratamento:</strong> {{tratamento}}</p>
-      <p><strong>Observações:</strong> {{observacoes}}</p>
-      <hr>
-      <p class="text-muted mb-0">
-        Dentista: {{Dentistum.nome}}
-      </p>
+      <div class="col-md-6">
+        <label class="form-label">Queixas do Paciente</label>
+        <textarea class="form-control" name="queixas" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.queixas}}{{/if}}</textarea>
+      </div>
     </div>
   </div>
-  {{/each}}
-</div>
+
+  <!-- Sinais Vitais -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header bg-primary text-white fw-bold">Sinais Vitais</div>
+    <div class="card-body row g-3">
+      <div class="col-md-4">
+        <label class="form-label">Pressão Arterial</label>
+        <input type="text" class="form-control" name="pressaoArterial" value="{{#if FichaClinicaCliente}}{{FichaClinicaCliente.pressaoArterial}}{{/if}}">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Frequência Cardíaca</label>
+        <input type="number" class="form-control" name="frequenciaCardiaca" value="{{#if FichaClinicaCliente}}{{FichaClinicaCliente.frequenciaCardiaca}}{{/if}}">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Peso (kg)</label>
+        <input type="number" step="0.1" class="form-control" name="peso" value="{{#if FichaClinicaCliente}}{{FichaClinicaCliente.peso}}{{/if}}">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Altura (m)</label>
+        <input type="number" step="0.01" class="form-control" name="altura" value="{{#if FichaClinicaCliente}}{{FichaClinicaCliente.altura}}{{/if}}">
+      </div>
+    </div>
+  </div>
+
+  <!-- Avaliação Oral -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header bg-primary text-white fw-bold">Avaliação Oral</div>
+    <div class="card-body row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Higiene Bucal</label>
+        <input type="text" class="form-control" name="higieneBucal" value="{{#if FichaClinicaCliente}}{{FichaClinicaCliente.higieneBucal}}{{/if}}">
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Cáries</label>
+        <textarea class="form-control" name="caries" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.caries}}{{/if}}</textarea>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Sensibilidade nos Dentes</label>
+        <textarea class="form-control" name="sensibilidadeDentes" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.sensibilidadeDentes}}{{/if}}</textarea>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Restaurações</label>
+        <textarea class="form-control" name="restauracoes" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.restauracoes}}{{/if}}</textarea>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Dentes Ausentes</label>
+        <textarea class="form-control" name="dentesAusentes" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.dentesAusentes}}{{/if}}</textarea>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Próteses</label>
+        <input type="text" class="form-control" name="proteses" value="{{#if FichaClinicaCliente}}{{FichaClinicaCliente.proteses}}{{/if}}">
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" name="bruxismo" value="true" id="bruxismo"
+            {{#if FichaClinicaCliente}}
+              {{#if FichaClinicaCliente.bruxismo}}checked{{/if}}
+            {{/if}}>
+          <label class="form-check-label" for="bruxismo">Bruxismo</label>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Tratamento Ortodôntico</label>
+        <input type="text" class="form-control" name="tratamentoOrtodontico" value="{{#if FichaClinicaCliente}}{{FichaClinicaCliente.tratamentoOrtodontico}}{{/if}}">
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Hábitos</label>
+        <textarea class="form-control" name="habitos" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.habitos}}{{/if}}</textarea>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Exame Oral Geral</label>
+        <textarea class="form-control" name="exameOralGeral" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.exameOralGeral}}{{/if}}</textarea>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Radiografias Recentes</label>
+        <textarea class="form-control" name="radiografiasRecentes" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.radiografiasRecentes}}{{/if}}</textarea>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Observações Extras</label>
+        <textarea class="form-control" name="observacoesExtras" rows="2">{{#if FichaClinicaCliente}}{{FichaClinicaCliente.observacoesExtras}}{{/if}}</textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão de salvar -->
+  <div class="d-grid mb-5">
+    <button type="submit" class="btn btn-primary btn-lg">Salvar Ficha Clínica</button>
+  </div>
+</form>
 
 </div>
-<script src="../../js/clientes/tela_inicial.js"></script>
+
+
+
+
+<!-- ================= RECOMENDAÇÕES ================= -->
+<div id="recomendacoes" class="container my-5">
+  <h2 class="mb-4">Recomendações do Dentista</h2>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {{#each RecomendaçõesDentistaCliente}}
+    <div class="col">
+      <div class="card border-info shadow-sm h-100" style="background-color: #e3f2fd;">
+        <div class="card-body">
+          <p><strong>Exame Físico:</strong> {{exameFisico}}</p>
+          <p><strong>Diagnóstico:</strong> {{diagnostico}}</p>
+          <p><strong>Tratamento:</strong> {{tratamento}}</p>
+          <p><strong>Observações:</strong> {{observacoes}}</p>
+        </div>
+        <div class="card-footer text-muted text-end">
+          Dentista: {{Dentistum.nome}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+<script src="/js/clientes/tela_inicial.js"></script>

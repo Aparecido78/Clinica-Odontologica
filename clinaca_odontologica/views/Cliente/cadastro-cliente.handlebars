@@ -3,48 +3,64 @@
     <h4 class="cadastro_usuario">Faça o seu cadastro</h4>
     <br>
  
+<form class="container needs-validation" action="/FinalizarCadastroCliente" method="post" novalidate>
+    
+    <div class="mb-3">
+        <label class="form-label">Nome:</label>
+        <input type="text" class="form-control" name="nome" placeholder="Digite seu nome:" required>
+        <div class="invalid-feedback">Por favor, digite seu nome completo.</div>
+    </div>
 
- <form action="/FinalizarCadastroCliente" method="post">
+    <div class="mb-3">
+        <label class="form-label">Email:</label>
+        <input type="email" class="form-control" name="email" placeholder="Digite seu email:" required>
+        <div class="invalid-feedback">Insira um e-mail válido.</div>
+    </div>
 
-    <label>Nome:</label>
-    <input type="text" name="nome" placeholder="Digite seu nome:" required>
-    <br>
+    <div class="mb-3">
+        <label class="form-label">Senha:</label>
+        <input type="password" class="form-control" name="senha" placeholder="Digite sua senha:" required minlength="4">
+        <div class="invalid-feedback">A senha deve ter no mínimo 4 dígitos.</div>
+    </div>
 
-    <label>Email:</label>
-    <input type="email" name="email" placeholder="Digite seu email:" required>
-    <br>
+    <div class="mb-3">
+        <label class="form-label">Telefone:</label>
+        <input type="text" class="form-control" name="telefone" placeholder="(00) 00000-0000" required>
+        <div class="invalid-feedback">Telefone é obrigatório.</div>
+    </div>
 
-    <label>Senha:</label>
-    <input type="password" name="senha" placeholder="Digite sua senha:" required>
-    <br>
+    <div class="mb-3">
+        <label class="form-label">CPF:</label>
+        <input type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required>
+        <div class="invalid-feedback">Digite um CPF válido.</div>
+    </div>
 
-    <label>Telefone:</label>
-    <input type="text" name="telefone" placeholder="Digite seu número:" required>
-    <br>
+    <div class="mb-3">
+        <label class="form-label">Endereço:</label>
+        <input type="text" class="form-control" name="endereco" placeholder="Rua, número, bairro..." required>
+        <div class="invalid-feedback">O endereço é obrigatório.</div>
+    </div>
 
-    <label>CPF:</label>
-    <input type="text" name="cpf" placeholder="Digite seu CPF:" required>
-    <br>
+    <div class="mb-3">
+        <label class="form-label">Data de Nascimento:</label>
+        <input type="date" class="form-control" name="data_nascimento" required>
+        <div class="invalid-feedback">Selecione sua data de nascimento.</div>
+    </div>
 
-    <label>Endereço:</label>
-    <input type="text" name="endereco" placeholder="Digite seu endereço:" required>
-    <br>
+    <div class="mb-3">
+        <label class="form-label">Sexo:</label>
+        <select class="form-select" name="sexo" required>
+            <option value="" selected disabled>Selecione</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+        </select>
+        <div class="invalid-feedback">Selecione uma opção.</div>
+    </div>
 
-    <label>Data de Nascimento:</label>
-    <input type="date" name="data_nascimento" required>
-    <br>
-
-    <label>Sexo:</label>
-    <select name="sexo" required>
-        <option value="">Selecione</option>
-        <option value="masculino">Masculino</option>
-        <option value="feminino">Feminino</option>
-        <option value="outro">Outro</option>
-    </select>
-    <br>
-
-
-    <button class="butao" type="submit">Cadastrar</button>
+    <button class="btn btn-success butao w-100" type="submit">Cadastrar</button>
 
 </form>
 <br><br>
+
+<script src="../../js/login_e cadastro.js"></script>

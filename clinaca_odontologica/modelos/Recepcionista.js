@@ -14,9 +14,6 @@ const Recepcionista = database.define("Recepcionista",{
         type: Sequelize.STRING,
         allowNull: false
     },
-    foto:{
-            type: Sequelize.STRING
-    },
         cpf:{
             type: Sequelize.STRING,
             allowNull: false
@@ -38,7 +35,6 @@ const Recepcionista = database.define("Recepcionista",{
             allowNull: false
     }
 })
-
 
 
 

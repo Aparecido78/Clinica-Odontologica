@@ -9,6 +9,7 @@ const FichaClinica = require("../../modelos/FichaClinica")
 module.exports ={
    async PaginaInicialDentista(req,res){
     const DentistumId = req.session.dentista.id
+    
 
 
     const Dentista_Logado = await Dentista.findOne({where:{id:DentistumId}})
@@ -20,18 +21,19 @@ module.exports ={
         ['hora', 'ASC']   
     ]
     })
-      const RecomendaçõesDentista = await AnotacoesDentista.findAll({
+      const Recomendacoes = await AnotacoesDentista.findAll({
                         where:{DentistumId:DentistumId},
                         include:[{model:Cliente}]
                     })
+       
+    res.render("Dentista/pagina-inicial-dentista", {
+    AgendaDentista: AgendaDentista.map(d => d.get({ plain: true })),
+    Dentista_Logado: Dentista_Logado.get({ plain: true }),
+    RecomendacoesDentista: Recomendacoes.map(r => r.get({ plain: true })), // 👈 AQUI
+    error: req.flash("error")[0],
+    success: req.flash("success")[0]
+})
 
-    res.render("Dentista/pagina-inicial-dentista",{
-        AgendaDentista: AgendaDentista.map(d => d.get({ plain: true })),
-        Dentista_Logado:Dentista_Logado.get({plain: true}),
-            RecomendaçõesDentista:RecomendaçõesDentista.map(d => d.get({ plain: true })),
-            error: req.flash("error")[0],
-            success: req.flash("success")[0]
-    })
 },
 
 
@@ -95,19 +97,19 @@ async RecomendacoesDentista(req,res){
         }
 
         await AnotacoesDentista.create({
-        exameFisico, diagnostico, tratamento,tratamento,
+        exameFisico, diagnostico, tratamento,
         observacoes, FichaClinicaId, ClienteId, DentistumId
     })
 
    
     req.flash("success","Recomendações cadastradas com sucesso")
-    res.redirect("PaginaInicialDentista")
+    res.redirect("/PaginaInicialDentista")
 
 
     }catch(err){
       
         req.flash("erro","Erro ao cadastrar recomendações pro cliente")
-        res.redirect("PaginaInicialDentista")
+        res.redirect("/PaginaInicialDentista")
     }
 
 },

@@ -2,7 +2,7 @@ const Recepcionista = require("../../modelos/Recepcionista");
 const bcrypt = require("bcryptjs");
 
 module.exports = {
-
+// Perfil Recepcionista
     async PerfilRecepcionista(req, res) {
         const RecepcionistaId = req.session.recepcionista.id;
 
@@ -20,7 +20,7 @@ module.exports = {
             res.redirect("/PaginaInicialRecepcionista");
         }
     },
-
+// Editar Contatos Do Recepcionista
     async EditarContatosRecepcionista(req, res) {
         const RecepcionistaId = req.session.recepcionista.id;
         const { email, telefone } = req.body;
@@ -40,7 +40,7 @@ module.exports = {
             res.redirect("/PerfilRecepcionista");
         }
     },
-
+// Editar Informações Do Recepcionista
     async EditarInformacoesPessoaisRecepcionista(req, res) {
         const RecepcionistaId = req.session.recepcionista.id;
         const { sexo, data_nascimento, endereco, cpf, nome } = req.body;
@@ -61,27 +61,51 @@ module.exports = {
         }
     },
 
+// Editar senha do Recepcionista
     async EditarSenhaRecepcionista(req, res) {
-        const RecepcionistaId = req.session.recepcionista.id;
-        const { senha } = req.body;
+    const RecepcionistaId = req.session.recepcionista.id;
+    const { senhaAtual, novaSenha, confirmarNovaSenha } = req.body;
 
-        try {
-            const sal = bcrypt.genSaltSync(10);
-            const hash = bcrypt.hashSync(senha, sal);
-
-            await Recepcionista.update(
-                { senha: hash },
-                { where: { id: RecepcionistaId } }
-            );
-
-            req.flash("success", "Senha alterada com sucesso!");
-            res.redirect("/PerfilRecepcionista");
-
-        } catch (err) {
-            console.log("Erro ao editar senha da recepcionista:", err);
-            req.flash("error", "Erro ao alterar senha");
-            res.redirect("/PerfilRecepcionista");
-        }
+   
+    if (novaSenha !== confirmarNovaSenha) {
+      req.flash("error", "A nova senha e a confirmação não conferem!");
+      return res.redirect("/PerfilRecepcionista");
     }
 
+    try {
+      
+      const recepcionista = await Recepcionista.findByPk(RecepcionistaId);
+      if (!recepcionista) {
+        req.flash("error", "Recepcionista não encontrada!");
+        return res.redirect("/PerfilRecepcionista");
+      }
+
+     
+      const senhaCorreta = await bcrypt.compare(senhaAtual, recepcionista.senha);
+      if (!senhaCorreta) {
+        req.flash("error", "Senha atual incorreta!");
+        return res.redirect("/PerfilRecepcionista");
+      }
+
+      
+      const sal = bcrypt.genSaltSync(10);
+      const hash = bcrypt.hashSync(novaSenha, sal);
+
+  
+      await Recepcionista.update(
+        { senha: hash },
+        { where: { id: RecepcionistaId } }
+      );
+
+      req.flash("success", "Senha alterada com sucesso!");
+      res.redirect("/PerfilRecepcionista");
+
+    } catch (err) {
+      console.error("Erro ao editar senha da recepcionista:", err);
+      req.flash("error", "Erro ao alterar senha");
+      res.redirect("/PerfilRecepcionista");
+    }
+  }
 };
+
+

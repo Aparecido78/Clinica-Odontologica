@@ -75,27 +75,50 @@ module.exports = {
     }
 },
 
-async EditarSenhaCliente(req,res){
-        const ClienteId = req.session.cliente.id
-        const { senha }= req.body
-        const sal = bcrypt.genSaltSync(10)
-        const hash = bcrypt.hashSync(senha, sal)
-        try{
-            await Cliente.update(
-                {senha:hash},
-                {where:{id:ClienteId}}
-                
-            )         
-            req.flash("success","Senha editada com sucesso")
-            res.redirect("/PaginaInicialUsuario")
-            
-        }catch(err){
+async  EditarSenhaCliente(req, res) {
+    const ClienteId = req.session.cliente.id;
+    const { senhaAtual, novaSenha, confirmarNovaSenha } = req.body;
 
-
-            req.flash("error","Erro ao editar senha",err)
-            res.redirect("/PaginaInicialUsuario")
-        }
+    // Verifica se nova senha e confirmação conferem
+    if (novaSenha !== confirmarNovaSenha) {
+        req.flash("error", "A nova senha e a confirmação não conferem!");
+        return res.redirect("/PaginaInicialUsuario");
     }
+
+    try {
+        // Busca o cliente no banco
+        const cliente = await Cliente.findByPk(ClienteId);
+
+        if (!cliente) {
+            req.flash("error", "Cliente não encontrado!");
+            return res.redirect("/PaginaInicialUsuario");
+        }
+
+        // Compara a senha atual informada com a do banco
+        const senhaCorreta = await bcrypt.compare(senhaAtual, cliente.senha);
+        if (!senhaCorreta) {
+            req.flash("error", "Senha atual incorreta!");
+            return res.redirect("/PaginaInicialUsuario");
+        }
+
+        // Se estiver correta, gera hash da nova senha e atualiza
+        const sal = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(novaSenha, sal);
+
+        await Cliente.update(
+            { senha: hash },
+            { where: { id: ClienteId } }
+        );
+
+        req.flash("success", "Senha editada com sucesso!");
+        res.redirect("/PaginaInicialUsuario");
+
+    } catch (err) {
+        console.error(err);
+        req.flash("error", "Erro ao editar senha!");
+        res.redirect("/PaginaInicialUsuario");
+    }
+}
 
 }
 

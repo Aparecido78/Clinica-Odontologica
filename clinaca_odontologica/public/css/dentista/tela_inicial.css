@@ -1,15 +1,24 @@
-#Recomendacoes{
-    display: none;
-}
 
 
 nav{
     width: 100%;
   
-    height: auto;
+    height: 60px;
     background: rgb(33, 189, 251);
     padding: 10px;
     color: white;
+    
+    border-radius: 10px;
+}
+nav a{
+    padding: 10px;
+}
+nav a:hover{
+    background: #084298;
+     border-radius: 10px;
+ 
+
+    
 }
 
 a{
@@ -31,19 +40,17 @@ a{
 }
 
 
+@media (max-width: 768px) {
+  nav {
+    padding-top: 25px;  /* empurra pra baixo */
+    height: auto;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
+  nav a {
+    display: block;     /* um embaixo do outro */
+    margin-top: 8px;
+  }
+}
 
 
 

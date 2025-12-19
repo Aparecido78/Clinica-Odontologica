@@ -24,4 +24,5 @@ const Servico = database.define("Servico", {
     }
 });
 
+
 module.exports = Servico;

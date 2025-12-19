@@ -68,29 +68,51 @@ module.exports = {
          
     }
 },
-
-async EditarSenhaAdmin(req,res){
-        const AdminId = req.session.admin.id
-        const { senha} = req.body
+async EditarSenhaAdmin(req, res) {
        
-        try{
-            const sal = bcrypt.genSaltSync(10)
-            const hash = bcrypt.hashSync(senha, sal)
-            await Admin.update(
-                {senha:hash},
-                {where:{id:AdminId}}
-                
-            )  
-            req.flash("success","Senha Alterada com sucesso")       
-            res.redirect("/PaginaInicialAdmin")
+        if (!req.session.admin || !req.session.admin.id) {
+            req.flash("error", "Sessão expirada. Faça login novamente.");
+            return res.redirect("/LoginAdmin");
+        }
+
+        const AdminId = req.session.admin.id;
+        const { senhaAtual, novaSenha, confirmarNovaSenha } = req.body;
+
+       
+        if (novaSenha !== confirmarNovaSenha) {
+            req.flash("error", "A nova senha e a confirmação não conferem!");
+            return res.redirect("/PerfilAdmin");
+        }
+
+        try {
+          
+            const admin = await Admin.findByPk(AdminId);
+            if (!admin) {
+                req.flash("error", "Admin não encontrado!");
+                return res.redirect("/PerfilAdmin");
+            }
+
+           
+            const senhaCorreta = await bcrypt.compare(senhaAtual, admin.senha);
+            if (!senhaCorreta) {
+                req.flash("error", "Senha atual incorreta!");
+                return res.redirect("/PerfilAdmin");
+            }
+
             
-        }catch(err){
+            const sal = bcrypt.genSaltSync(10);
+            const hash = bcrypt.hashSync(novaSenha, sal);
 
+          
+            await admin.update({ senha: hash });
 
-            req.flash("error","Erro ao editar senha",err)
-            res.redirect("/PaginaInicialAdmin")
+            req.flash("success", "Senha alterada com sucesso!");
+            res.redirect("/PerfilAdmin");
+
+        } catch (err) {
+            console.error("Erro ao alterar senha do admin:", err);
+            req.flash("error", "Erro ao alterar senha. Tente novamente.");
+            res.redirect("/PerfilAdmin");
         }
     }
-
 }
-

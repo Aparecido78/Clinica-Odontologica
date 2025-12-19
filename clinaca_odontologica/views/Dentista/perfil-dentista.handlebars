@@ -1,63 +1,86 @@
 {{>dentista/navbar}}
+
 <link rel="stylesheet" href="../../css/perfil.css">
 
 <div class="container mt-4">
+    <br><br>
 
     <!-- MENU DE BOTÕES -->
-    <ul class="mb-4">
-        <button type="button" id="ButaoEditarInformacoes">Informações Pessoais</button>
-        <button type="button" id="ButaoEditarContatos">Contatos</button>
-        <button type="button" id="ButaoSenha">Senha</button>
-    </ul>
-
-    <!-- ================= ALTERAR SENHA ================= -->
-    <div id="Senha" class="box-perfil">
-        <h2>Alterar Senha</h2>
+   <div class="d-flex justify-content-center gap-3 mb-4 flex-wrap">
+    <button id="ButaoEditarInformacoes">Informações Pessoais</button>
+    <button id="ButaoEditarContatos">Contatos</button>
+    <button id="ButaoSenha">Senha</button>
+</div>
+<!-- ALTERAR SENHA DENTISTA -->
+<div id="EditarSenhaDentista" class="card mx-auto mb-4" style="max-width:600px; display:none;">
+    <div class="card-body">
+        <h2 class="card-title text-center mb-3">Alterar Senha</h2>
         <form action="/EditarSenhaDentista" method="post">
-            <label>Nova Senha:</label>
-            <input type="password" name="senha" placeholder="Digite sua nova senha" required>
-            <button type="submit">Alterar Senha</button>
+            <div class="mb-3">
+                <label class="form-label">Senha Atual:</label>
+                <input type="password" name="senhaAtual" class="form-control" placeholder="Digite sua senha atual" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nova Senha:</label>
+                <input type="password" name="novaSenha" class="form-control" placeholder="Digite sua nova senha" required minlength="4">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Confirme a Nova Senha:</label>
+                <input type="password" name="confirmarNovaSenha" class="form-control" placeholder="Confirme sua nova senha" required minlength="4">
+                <div id="erroSenhaDentista" class="text-danger mt-1" style="display:none;"></div>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Alterar Senha</button>
         </form>
     </div>
+</div>
 
-    <!-- ================= EDITAR INFORMAÇÕES ================= -->
-    <div id="EditarInformacoesPessoaisDentista" class="box-perfil">
-        <form action="/EditarInformacoesPessoaisDentista" method="post">
-            <label>CPF:</label>
-            <input type="text" name="cpf" value="{{DentistaEncontrado.cpf}}">
 
-            <label>Endereço:</label>
-            <input type="text" name="endereco" value="{{DentistaEncontrado.endereco}}">
-
-            <label>Data de Nascimento:</label>
-            <input type="date" name="data_nascimento" value="{{DentistaEncontrado.data_nascimento}}">
-
-            <label>Sexo:</label>
-            <input type="text" name="sexo" value="{{DentistaEncontrado.sexo}}">
-
-            <label>Nome:</label>
-            <input type="text" name="nome" value="{{DentistaEncontrado.nome}}">
-
-            <button type="submit">
-                Editar Informações Pessoais
-            </button>
-        </form>
+    <!-- EDITAR INFORMAÇÕES PESSOAIS -->
+    <div id="EditarInformacoesPessoaisDentista" class="card mx-auto mb-4" style="max-width:600px; display:none;">
+        <div class="card-body">
+            <form action="/EditarInformacoesPessoaisDentista" method="post">
+                <h2 class="card-title text-center mb-3">Informações Pessoais</h2>
+                <div class="mb-3">
+                    <label class="form-label">CPF:</label>
+                    <input type="text" name="cpf" class="form-control" value="{{DentistaEncontrado.cpf}}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Endereço:</label>
+                    <input type="text" name="endereco" class="form-control" value="{{DentistaEncontrado.endereco}}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Data de Nascimento:</label>
+                    <input type="date" name="data_nascimento" class="form-control" value="{{DentistaEncontrado.data_nascimento}}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Sexo:</label>
+                    <input type="text" name="sexo" class="form-control" value="{{DentistaEncontrado.sexo}}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nome:</label>
+                    <input type="text" name="nome" class="form-control" value="{{DentistaEncontrado.nome}}" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Editar Informações Pessoais</button>
+            </form>
+        </div>
     </div>
 
-    <!-- ================= EDITAR CONTATOS ================= -->
-    <div id="EditarContatosDentista" class="box-perfil">
-        <h2>Editar Contatos</h2>
-        <form action="/EditarContatosDentista" method="post">
-            <label>Email:</label>
-            <input type="email" name="email" value="{{DentistaEncontrado.email}}">
-
-            <label>Telefone:</label>
-            <input type="number" name="telefone" value="{{DentistaEncontrado.telefone}}">
-
-            <button type="submit">
-                Editar Contatos
-            </button>
-        </form>
+    <!-- EDITAR CONTATOS -->
+    <div id="EditarContatosDentista" class="card mx-auto mb-4" style="max-width:600px; display:none;">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-3">Editar Contatos</h2>
+            <form action="/EditarContatosDentista" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Email:</label>
+                    <input type="email" name="email" class="form-control" value="{{DentistaEncontrado.email}}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Telefone:</label>
+                    <input type="tel" name="telefone" class="form-control" value="{{DentistaEncontrado.telefone}}" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Editar Contatos</button>
+            </form>
+        </div>
     </div>
 
 </div>

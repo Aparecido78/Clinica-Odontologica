@@ -1,32 +1,38 @@
+:root {
+    --cor-principal: rgb(33, 189, 251);
+    --cor-hover: #084298;
+}
+
+/* NAVBAR ADMIN */
 nav {
     position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    background: rgb(20, 140, 200);
+    background: var(--cor-principal);
     padding: 10px 20px;
     display: flex;
     justify-content: flex-end;
     gap: 15px;
     box-sizing: border-box;
-    z-index: 9999; 
+    z-index: 9999;
 }
 
 nav a {
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 10px;
+    padding: 6px 12px;
+    border-radius: 5px;
     transition: 0.3s;
 }
 
 nav a:hover {
-    background: rgb(33, 189, 251);
+    background-color: var(--cor-hover);
 }
 
-
+/* Ajuste do body para navbar fixa */
 body {
     margin: 0;
-    padding-top: 50px; 
+    padding-top: 50px; /* evita que a navbar sobreponha o conteúdo */
 }

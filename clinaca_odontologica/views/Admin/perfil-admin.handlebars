@@ -1,44 +1,58 @@
 {{>admin/navAdmin }}
 <link rel="stylesheet" href="../../css/perfil.css">
 <br><br>
-
 <ul>
-<button id="ButaoEditarInformacoes">Informações Pessoais</button>
-<button id="ButaoEditarContatos">Contatos</button>
-<button id="ButaoSenha">Senha</button>
+    <li><button id="ButaoEditarInformacoes">Informações Pessoais</button></li>
+    <li><button id="ButaoEditarContatos">Contatos</button></li>
+    <li><button id="ButaoSenha">Senha</button></li>
 </ul>
 
 
-<div id="EditarSenhaAdmin">
-    <h2>Alterar senha</h2>
-    <form action="/EditarSenhaAdmin" method="post">
-        
-        <label>Nova Senha:</label>
-        <input type="password" name="senha" placeholder="Digite sua nova senha" required>
-        <br>
+<div id="EditarSenhaAdmin" class="card mx-auto mb-4" style="max-width:600px;">
+    <div class="card-body">
+        <h2 class="card-title text-center mb-3">Alterar Senha</h2>
+        <form action="/EditarSenhaAdmin" method="post">
+            <div class="mb-3">
+                <label class="form-label">Senha Atual:</label>
+                <input type="password" name="senhaAtual" class="form-control" placeholder="Digite sua senha atual" required>
+            </div>
 
-        <button type="submit">Alterar Senha</button>
-    </form>
+            <div class="mb-3">
+                <label class="form-label">Nova Senha:</label>
+                <input type="password" name="novaSenha" class="form-control" placeholder="Digite sua nova senha" required minlength="4">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Confirme a Nova Senha:</label>
+                <input type="password" name="confirmarNovaSenha" class="form-control" placeholder="Confirme sua nova senha" required minlength="4">
+                <div id="erroSenhaAdmin" class="text-danger mt-1" style="display:none;"></div>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Alterar Senha</button>
+        </form>
+    </div>
 </div>
+
+
 <br>
 <hr>
 
 <div id="EditarInformacoesPessoaisAdmin">
     <form action="/EditarInformacoesPessoaisAdmin" method="post">
-        <label>CPF:</label>
-        <input type="text" name="cpf" value="{{AdminEncontrado.cpf}}">
+    <label>CPF:</label>
+    <input type="text" name="cpf" value="{{AdminEncontrado.cpf}}" required>
         <br>
          <label>Endereço:</label>
-        <input type="text" name="endereco" value="{{AdminEncontrado.endereco}}">
+        <input type="text" name="endereco" value="{{AdminEncontrado.endereco}}" required>
         <br>
          <label>Data de Nascimento:</label>
         <input type="date" name="data_nascimento" value="{{AdminEncontrado.data_nascimento}}">
         <br>
          <label>Sexo:</label>
-        <input type="text" name="sexo" value="{{AdminEncontrado.sexo}}">
+        <input type="text" name="sexo" value="{{AdminEncontrado.sexo}}" required>
         <br>
         <label>Nome:</label>
-        <input type="text" name="nome" value="{{AdminEncontrado.nome}}">
+        <input type="text" name="nome" value="{{AdminEncontrado.nome}}" required>
         <br>
         <button>Editar Informações Pessoais</button>
 
@@ -52,12 +66,11 @@
     <h1>Perfil</h1>
     <form action="/EditarContatosAdmin" method="post">
         
-
         <label>Email:</label>
-        <input type="email" name="email" value="{{AdminEncontrado.email}}">
+        <input type="email" name="email" value="{{AdminEncontrado.email}}" required>
         <br>
         <label>Telefone</label>
-        <input type="number" name="telefone" value="{{AdminEncontrado.telefone}}">
+        <input type="tel" name="telefone" value="{{AdminEncontrado.telefone}}" required>
 
         <button>Editar  contatos</button>
 

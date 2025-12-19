@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 const database = require("../configuracao/config.js");
 
-const Agendamento = require("./Agendamentos.js")
+
 const Cliente = require("./Cliente");
 const FichaClinica = database.define("FichaClinica", {
 
@@ -61,7 +61,7 @@ const FichaClinica = database.define("FichaClinica", {
         allowNull: true
     },
 
-    cáries: {               
+    caries: {               
         type: Sequelize.TEXT,
         allowNull: true
     },
@@ -76,7 +76,7 @@ const FichaClinica = database.define("FichaClinica", {
         allowNull: true
     },
 
-    restaurações: {         
+    restauracoes: {         
         type: Sequelize.TEXT,
         allowNull: true
     },
@@ -86,7 +86,7 @@ const FichaClinica = database.define("FichaClinica", {
         allowNull: true
     },
 
-    próteses: {               
+    proteses: {               
         type: Sequelize.STRING,
         allowNull: true
     },
@@ -101,7 +101,7 @@ const FichaClinica = database.define("FichaClinica", {
         allowNull: true
     },
 
-    hábitos: {                
+    habitos: {                
         type: Sequelize.TEXT,
         allowNull: true
     },

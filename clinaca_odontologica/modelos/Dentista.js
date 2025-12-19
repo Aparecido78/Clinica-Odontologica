@@ -13,9 +13,6 @@ const Dentista = database.define("Dentista",{
         type: Sequelize.STRING,
         allowNull: false
     },
-    foto:{
-            type: Sequelize.STRING
-    },
         cpf:{
             type: Sequelize.STRING,
             allowNull: false
@@ -37,6 +34,11 @@ const Dentista = database.define("Dentista",{
             allowNull: false
         }
 })
+
+
+
+
+
 
 
 

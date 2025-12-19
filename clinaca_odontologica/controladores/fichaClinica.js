@@ -84,7 +84,7 @@ async SalvarFichaClinica(req, res) {
 
 
  async  FichaClinicaCliente(req, res) {
-    const ClienteId = parseInt(req.body.ClienteId, 10);
+    const ClienteId = req.body.ClienteId;
 
     if (!ClienteId) {
         req.flash("error", "ID do cliente não enviado.");

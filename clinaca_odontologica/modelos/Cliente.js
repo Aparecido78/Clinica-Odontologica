@@ -14,10 +14,6 @@ const Cliente = database.define("Cliente",{
         type: Sequelize.STRING,
         allowNull: false
     },
-    foto:{
-        type: Sequelize.STRING
-    },
-
     cpf:{
         type: Sequelize.STRING,
         allowNull: false
@@ -41,7 +37,6 @@ const Cliente = database.define("Cliente",{
 
 
 })
-
 
 
 

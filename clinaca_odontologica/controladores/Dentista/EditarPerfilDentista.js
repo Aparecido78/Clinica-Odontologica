@@ -64,30 +64,51 @@ module.exports = {
             res.redirect("/PerfilDentista");
         }
     },
+    
+async EditarSenhaDentista(req, res) {
+    const DentistaId = req.session.dentista.id;
+    const { senhaAtual, novaSenha, confirmarNovaSenha } = req.body;
 
-    async EditarSenhaDentista(req, res) {
-        const DentistaId = req.session.dentista.id;
-        const {  senha } = req.body;
-
-        try {
-
-
-            const sal = bcrypt.genSaltSync(10);
-            const hash = bcrypt.hashSync(senha, sal);
-
-            await Dentista.update(
-                { senha: hash },
-                { where: { id: DentistaId } }
-            );
-
-            req.flash("success", "Senha alterada com sucesso!");
-            res.redirect("/PerfilDentista");
-
-        } catch (err) {
-           
-            req.flash("error", "Erro ao alterar senha");
-            res.redirect("/PerfilDentista");
-        }
+    
+    if (novaSenha !== confirmarNovaSenha) {
+        req.flash("error", "A nova senha e a confirmação não conferem!");
+        return res.redirect("/PerfilDentista");
     }
+
+    try {
+        
+        const dentista = await Dentista.findByPk(DentistaId);
+
+        if (!dentista) {
+            req.flash("error", "Dentista não encontrado!");
+            return res.redirect("/PerfilDentista");
+        }
+
+        
+        const senhaCorreta = await bcrypt.compare(senhaAtual, dentista.senha);
+        if (!senhaCorreta) {
+            req.flash("error", "Senha atual incorreta!");
+            return res.redirect("/PerfilDentista");
+        }
+
+        
+        const sal = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(novaSenha, sal);
+
+        await Dentista.update(
+            { senha: hash },
+            { where: { id: DentistaId } }
+        );
+
+        req.flash("success", "Senha alterada com sucesso!");
+        res.redirect("/PerfilDentista");
+
+    } catch (err) {
+        console.error(err);
+        req.flash("error", "Erro ao alterar senha");
+        res.redirect("/PerfilDentista");
+    }
+}
+
 
 };

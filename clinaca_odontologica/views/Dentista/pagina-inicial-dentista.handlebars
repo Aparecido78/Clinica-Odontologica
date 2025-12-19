@@ -2,18 +2,14 @@
 <link rel="stylesheet" href="../../css/dentista/tela_inicial.css">
 <link rel="stylesheet" href="../../css/dentista/agendaDentista.css">
 <link rel="stylesheet" href="../../css/dentista/recomendacoes.css">
+
 <nav>
-  <a class="perfil" href="/PerfilDentista">Perfil dentista</a>
-  <a id="ButaoAgendaDentista" href="#">Agenda dentista</a>
-  <a id="ButaoRecomendacoes" href="#">Recomendações</a>
+  <a class="perfil" href="/PerfilDentista">Perfil </a>
+  <a id="ButaoAgendaDentista">Agenda dentista</a>
+  <a id="ButaoRecomendacoes">Recomendações</a>
   <a class="nome">Nome: {{Dentista_Logado.nome}}</a>
   <a href="/logout" class="sair">Sair</a>
 </nav>
-
-
-
-
-
 
 
 
@@ -29,59 +25,73 @@
 </form>
 
 
+<div class="container my-5">
+    <h1 class="text-center mb-5 fw-bold">Agenda do Dentista</h1>
 
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {{#each AgendaDentista}}
+        <div class="col">
+            <div class="card border-info h-100 shadow-sm" style="background-color: #e3f2fd;">
+                <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Cliente: {{Cliente.nome}}</h5>
+                    <span>Serviço: {{Servico.nome}}</span>
+                </div>
+                <div class="card-body">
+                    <p class="mb-2"><i class="bi bi-calendar-event me-2"></i><strong>Data:</strong> {{data}}</p>
+                    <p class="mb-2"><i class="bi bi-clock me-2"></i><strong>Hora:</strong> {{hora}}</p>
 
-{{#each AgendaDentista}}
-
-
-
-<div class="container_agenda">
-    <div class="agenda border border-3 m-3 text-center rounded-5 ">
-        <p>Cliente: {{Clientes.nome}}</p>
-        <p>Serviço: {{Servico.nome}}</p>
-        <p>Data: {{data}}</p>
-        <p>Hora: {{hora}}</p>
-        <form action="/FichaClinicaCliente" method="post">
-            <input type="hidden" name="ClienteId" value="{{ Clientes.id }}">
-            <button type="submit">Ficha Clinica do Cliente</button>
-
-        </form>
-       
-    </div>
-
-</div>
-
-{{/each}}
-</div>
-
-</div>
-<!-- ================= RECOMENDAÇÕES ================= -->
-<div id="Recomendacoes" class="mt-5">
-  <h2 class="mb-4 text-primary">Página de Recomendações Feitas aos Clientes</h2>
-
-  <div class="row g-4">
-    {{#each RecomendaçõesDentista}}
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-header bg-info text-white">
-          Cliente: {{Cliente.nome}}
+                    <form action="/FichaClinicaCliente" method="post">
+                        <input type="hidden" name="ClienteId" value="{{ Cliente.id }}">
+                        <button type="submit" class="btn btn-primary w-100 mt-2">Ficha Clínica do Cliente</button>
+                    </form>
+                </div>
+            </div>
         </div>
+        {{/each}}
+    </div>
+</div>
+</div>
+
+
+</div>
+<div id="Recomendacoes" class="container my-5">
+
+  <!-- TÍTULO EM CIMA -->
+  <div>
+  <h1 class="text-center mb-5 fw-bold">
+    Recomendações aos Clientes
+  </h1>
+
+  <!-- LISTA (UMA POR LINHA) -->
+  <div class="row g-4">
+
+    {{#each RecomendacoesDentista}}
+    <div class="col-12">
+
+      <div class="card border-primary shadow-sm">
+
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">
+            Cliente: {{Cliente.nome}}
+          </h5>
+        </div>
+
         <div class="card-body">
           <p><strong>Exame Físico:</strong> {{exameFisico}}</p>
           <p><strong>Diagnóstico:</strong> {{diagnostico}}</p>
           <p><strong>Tratamento:</strong> {{tratamento}}</p>
-          <p><strong>Observações:</strong> {{observacoes}}</p>
+          <p class="mb-0"><strong>Observações:</strong> {{observacoes}}</p>
         </div>
-        <div class="card-footer text-muted text-end">
-          Dentista: {{Dentistum.nome}}
-        </div>
+
       </div>
+
     </div>
     {{/each}}
+
   </div>
+
 </div>
 
 
-</div>
 
 <script src="../../js/dentista/tela_inicial_dentista.js"></script>

@@ -4,18 +4,22 @@
 
 <h1>Tela de Cadastro de Servicos</h1>
 
-<form action="/CadastrarServico" method="post" enctype="multipart/form-data">
+<form action="/CadastrarServico" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
     <label>Nome:</label>
     <input type="text" name="nome" required>
+    <div class="invalid-feedback">Nome do serviço é obrigatório.</div>
 
     <label>Descricao:</label>
     <input type="text" name="descricao" required>
+    <div class="invalid-feedback">Descrição é obrigatória.</div>
 
     <label>Duração:</label>
     <input type="number" name="duracao" required>
+    <div class="invalid-feedback">Informe a duração.</div>
 
     <label>Preço:</label>
     <input type="number" name="valor" required>
+    <div class="invalid-feedback">Informe o preço.</div>
 
     <label>Foto:</label>
     <input type="file" name="foto">

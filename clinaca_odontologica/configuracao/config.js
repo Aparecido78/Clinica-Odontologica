@@ -1,19 +1,20 @@
-const { Sequelize } = require("sequelize");
+require('dotenv').config(); // Puxa variáveis do .env
+const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: "postgres",
-  protocol: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false, 
-    },
-  },
-  logging: false, 
-});
+const sequelize = new Sequelize(
+  process.env.DB_NAME,   // nome do banco
+  process.env.DB_USER,   // usuário
+  process.env.DB_PASS,   // senha
+  {
+    host: process.env.DB_HOST, // host
+    port: process.env.DB_PORT, // porta
+    dialect: 'mysql',          // usando MySQL
+    logging: false,            // desativa logs do SQL
+  }
+);
 
 sequelize.authenticate()
-  .then(() => console.log("Conectado ao PostgreSQL no Render!"))
-  .catch(err => console.error("Erro ao conectar ao PostgreSQL:", err));
+  .then(() => console.log('✅ Conectado ao MySQL com sucesso!'))
+  .catch((err) => console.error('❌ Erro ao conectar ao MySQL:', err));
 
 module.exports = sequelize;

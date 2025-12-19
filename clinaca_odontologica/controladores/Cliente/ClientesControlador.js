@@ -1,9 +1,6 @@
-
 const { where } = require("sequelize");
 const Clientes = require("../../modelos/Cliente")
-
 const sendEmail = require("../../utilitarios/email/nodemailer")
-
 const bcrypt = require("bcryptjs")
 const FichaClinica = require("../../modelos/FichaClinica")
 const Servico = require("../../modelos/Servicos")
@@ -35,7 +32,14 @@ async PaginaInicialUsuario(req,res){
             include:[{model:Clientes},{model:Dentista}]
         })
 
+    const FichaClinicaCliente = await FichaClinica.findOne({
+                         where: { ClienteId: ClienteId },
+        })
+
     return res.render("Cliente/pagina-inicial-cliente",{
+     FichaClinicaCliente: FichaClinicaCliente
+            ? FichaClinicaCliente.get({ plain: true })
+            : null,
     servicos:servicos,
     agendamentos:agendamentos,
     RecomendaçõesDentistaCliente: RecomendaçõesDentistaCliente,

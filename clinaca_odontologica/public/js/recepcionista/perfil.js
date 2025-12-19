@@ -1,31 +1,44 @@
-const informacoesPessoais = document.getElementById("informacoesPessoais");
-const contatos = document.getElementById("contatos");
-const senha = document.getElementById("senha");
 
-const botaoInformacoes = document.getElementById("botaoInformacoes");
-const botaoContatos = document.getElementById("botaoContatos");
-const botaoSenha = document.getElementById("botaoSenha");
+    const senha = document.getElementById("EditarSenhaRecepcionista");
+    const info = document.getElementById("EditarInformacoesPessoaisRecepcionista");
+    const contatos = document.getElementById("EditarContatosRecepcionista");
+
+    const btnInfo = document.getElementById("ButaoEditarInformacoes");
+    const btnContatos = document.getElementById("ButaoEditarContatos");
+    const btnSenha = document.getElementById("ButaoSenha");
+
+    btnInfo.addEventListener("click", () => {
+        senha.style.display = "none";
+        info.style.display = "block";
+        contatos.style.display = "none";
+    });
+
+    btnContatos.addEventListener("click", () => {
+        senha.style.display = "none";
+        info.style.display = "none";
+        contatos.style.display = "block";
+    });
+
+    btnSenha.addEventListener("click", () => {
+        senha.style.display = "block";
+        info.style.display = "none";
+        contatos.style.display = "none";
+    });
 
 
-informacoesPessoais.style.display = "block";
-contatos.style.display = "none";
-senha.style.display = "none";
 
+// Editar Senha
+  const formRecepcionista = document.querySelector("#EditarSenhaRecepcionista form");
+  const novaSenha = formRecepcionista.querySelector("input[name='novaSenha']");
+  const confirmarNovaSenha = formRecepcionista.querySelector("input[name='confirmarNovaSenha']");
+  const erroDiv = document.getElementById("erroSenhaRecepcionista");
 
-botaoInformacoes.addEventListener("click", () => {
-    informacoesPessoais.style.display = "block";
-    contatos.style.display = "none";
-    senha.style.display = "none";
-});
-
-botaoContatos.addEventListener("click", () => {
-    informacoesPessoais.style.display = "none";
-    contatos.style.display = "block";
-    senha.style.display = "none";
-});
-
-botaoSenha.addEventListener("click", () => {
-    informacoesPessoais.style.display = "none";
-    contatos.style.display = "none";
-    senha.style.display = "block";
-});
+  formRecepcionista.addEventListener("submit", function(event) {
+    if (novaSenha.value !== confirmarNovaSenha.value) {
+      erroDiv.textContent = "As senhas não conferem!";
+      erroDiv.style.display = "block";
+      event.preventDefault();
+    } else {
+      erroDiv.style.display = "none";
+    }
+  });

@@ -3,10 +3,11 @@ const bcrypt = require("bcryptjs")
 const Recepcionista = require("../modelos/Recepcionista")
 const Dentista = require("../modelos/Dentista")
 const Admin = require("../modelos/Admin")
-const Clientes = require("../modelos/Cliente")
+const Cliente = require("../modelos/Cliente")
 const Servico = require("../modelos/Servicos")
 const Agendamento = require("../modelos/Agendamentos")
 const AnotacoesDentista = require("../modelos/AnotacoesDentista")
+const FichaClinica = require("../modelos/FichaClinica")
 
 module.exports = {
 
@@ -31,7 +32,7 @@ module.exports = {
                     const quantidade_recepcionista = await Recepcionista.count()
                     const quantidade_servicos = await Servico.count()
                     const quantidade_agendmento = await Agendamento.count({ where: { status: "agendado" } })
-                    const quantidade_clientes = await Clientes.count()
+                    const quantidade_clientes = await Cliente.count()
 
                     req.flash("success", "admin logado com sucesso")
                     return res.render("Admin/pagina-inicial-admin", {
@@ -83,7 +84,7 @@ module.exports = {
             }
 
         
-            const Clientes_existe = await Clientes.findOne({ where: { email } })
+            const Clientes_existe = await Cliente.findOne({ where: { email } })
 
             if (Clientes_existe) {
 
@@ -99,21 +100,29 @@ module.exports = {
 
                     const agendamentos = await Agendamento.findAll({
                         where: { ClienteId: Clientes_existe.id },
-                        include: [{ model: Clientes }, { model: Servico }]
+                        include: [{ model: Cliente }, { model: Servico }]
+                    })
+
+                    const FichaClinicaCliente = await FichaClinica.findOne({
+                         where: { ClienteId: Clientes_existe.id },
+
                     })
 
                     const servicos = await Servico.findAll()
 
                     const Recomendações = await AnotacoesDentista.findAll({
                         where: { ClienteId: Clientes_existe.id },
-                        include: [{ model: Clientes }, { model: Dentista }]
+                        include: [{ model: Cliente }, { model: Dentista }]
                     })
 
                     req.flash("success", "Cliente logado com sucesso!")
 
                     return res.render("Cliente/pagina-inicial-cliente", {
                         clientes_Logado: Clientes_existe.get({ plain: true }),
-                        servicos,
+                        servicos:servicos,
+                         FichaClinicaCliente: FichaClinicaCliente
+                        ? FichaClinicaCliente.get({ plain: true })
+                        : null,
                         RecomendaçõesDentistaCliente: Recomendações,
                         agendamentos: agendamentos.map(a => a.toJSON()),
                         error: req.flash("error")[0],
@@ -143,21 +152,22 @@ module.exports = {
 
                     const AgendaDentista = await Agendamento.findAll({
                         where: { DentistumId: Dentista_existe.id },
-                        include: [{ model: Servico }, { model: Clientes }, { model: Dentista }],
+                        include: [{ model: Servico }, { model: Cliente }, { model: Dentista }],
                         order: [['data', 'ASC'], ['hora', 'ASC']]
                     })
 
-                    const Recomendações = await AnotacoesDentista.findAll({
+                    const Recomendacoes = await AnotacoesDentista.findAll({
                         where: { DentistumId: Dentista_existe.id },
-                        include: [{ model: Clientes }]
+                        include: [{ model: Cliente }]
                     })
 
                     req.flash("success", "Dentista logado com sucesso!")
+                  
 
                     return res.render("Dentista/pagina-inicial-dentista", {
                         AgendaDentista: AgendaDentista.map(d => d.get({ plain: true })),
                         Dentista_nome: Dentista_existe.nome,
-                        RecomendaçõesDentista: Recomendações.map(d => d.get({ plain: true })),
+                        RecomendacoesDentista: Recomendacoes.map(d => d.get({ plain: true })),
                         Dentista_Logado: Dentista_existe.get({ plain: true }),
                         error: req.flash("error")[0],
                         success: req.flash("success")[0]

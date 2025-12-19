@@ -1,9 +1,8 @@
 module.exports = {
 
 
-   AutenticacaoAdmin (req,res,next){
-      console.log("SESSION ADMIN:", req.session.admin)
-    if(!req.session  || !req.session.admin || !req.session.admin.id){
+     AutenticacaoAdmin (req,res,next){
+        if(!req.session  || !req.session.admin || !req.session.admin.id){
         return res.redirect("/Login")
 
     }

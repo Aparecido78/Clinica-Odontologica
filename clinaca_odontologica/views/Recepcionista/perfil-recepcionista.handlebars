@@ -1,63 +1,93 @@
 <link rel="stylesheet" href="../../css/perfil.css">
-
-<nav>
-    <a href="/PaginaInicialRecepcionista">Tela Inicial</a>
-    <a href="/logout" class="sair">Sair</a>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="/PaginaInicialRecepcionista">Tela Inicial</a>
+    <a class="nav-link text-danger" href="/logout">Sair</a>
+  </div>
 </nav>
+
 
 <div class="container mt-4">
 
-    <!-- MENU -->
-    <ul class="mb-4">
-        <button type="button" id="ButaoEditarInformacoes">Informações Pessoais</button>
-        <button type="button" id="ButaoEditarContatos">Contatos</button>
-        <button type="button" id="ButaoSenha">Senha</button>
-    </ul>
-
-    <!-- ================= SENHA ================= -->
-    <div id="senha" class="box-perfil">
-        <h2>Alterar senha</h2>
+    <!-- MENU DE BOTÕES -->
+    <div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+        <button id="ButaoEditarInformacoes" class="btn btn-primary">Informações Pessoais</button>
+        <button id="ButaoEditarContatos" class="btn btn-primary">Contatos</button>
+        <button id="ButaoSenha" class="btn btn-primary">Senha</button>
+    </div>
+<!-- ALTERAR SENHA -->
+<div id="EditarSenhaRecepcionista" class="card mx-auto mb-4" style="max-width:600px; display:none;">
+    <div class="card-body">
+        <h2 class="card-title text-center mb-3">Alterar Senha</h2>
         <form action="/EditarSenhaRecepcionista" method="post">
-            <label>Nova Senha:</label>
-            <input type="password" name="senha" placeholder="Digite sua nova senha" required>
-            <button type="submit">Alterar Senha</button>
+            <div class="mb-3">
+                <label class="form-label">Senha Atual:</label>
+                <input type="password" name="senhaAtual" class="form-control" placeholder="Digite sua senha atual" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Nova Senha:</label>
+                <input type="password" name="novaSenha" class="form-control" placeholder="Digite sua nova senha" required minlength="4">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Confirme a Nova Senha:</label>
+                <input type="password" name="confirmarNovaSenha" class="form-control" placeholder="Confirme sua nova senha" required minlength="4">
+                <div id="erroSenhaRecepcionista" class="text-danger mt-1" style="display:none;"></div>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Alterar Senha</button>
         </form>
     </div>
+</div>
 
-    <!-- ================= INFORMAÇÕES ================= -->
-    <div id="informacoesPessoais" class="box-perfil">
-        <form action="/EditarInformacoesPessoaisRecepcionista" method="post">
-            <label>CPF:</label>
-            <input type="text" name="cpf" value="{{Recepcionista.cpf}}">
 
-            <label>Endereço:</label>
-            <input type="text" name="endereco" value="{{Recepcionista.endereco}}">
-
-            <label>Data de Nascimento:</label>
-            <input type="date" name="data_nascimento" value="{{Recepcionista.data_nascimento}}">
-
-            <label>Sexo:</label>
-            <input type="text" name="sexo" value="{{Recepcionista.sexo}}">
-
-            <label>Nome:</label>
-            <input type="text" name="nome" value="{{Recepcionista.nome}}">
-
-            <button>Editar Informações Pessoais</button>
-        </form>
+    <!-- EDITAR INFORMAÇÕES PESSOAIS -->
+    <div id="EditarInformacoesPessoaisRecepcionista" class="card mx-auto mb-4" style="max-width:600px; display:none;">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-3">Informações Pessoais</h2>
+            <form action="/EditarInformacoesPessoaisRecepcionista" method="post">
+                <div class="mb-3">
+                    <label class="form-label">CPF:</label>
+                    <input type="text" name="cpf" class="form-control" value="{{Recepcionista.cpf}}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Endereço:</label>
+                    <input type="text" name="endereco" class="form-control" value="{{Recepcionista.endereco}}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Data de Nascimento:</label>
+                    <input type="date" name="data_nascimento" class="form-control" value="{{Recepcionista.data_nascimento}}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Sexo:</label>
+                    <input type="text" name="sexo" class="form-control" value="{{Recepcionista.sexo}}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nome:</label>
+                    <input type="text" name="nome" class="form-control" value="{{Recepcionista.nome}}" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Editar Informações Pessoais</button>
+            </form>
+        </div>
     </div>
 
-    <!-- ================= CONTATOS ================= -->
-    <div id="contatos" class="box-perfil">
-        <h2>Editar Contatos</h2>
-        <form action="/EditarContatosRecepcionista" method="post">
-            <label>Email:</label>
-            <input type="email" name="email" value="{{Recepcionista.email}}">
-
-            <label>Telefone</label>
-            <input type="number" name="telefone" value="{{Recepcionista.telefone}}">
-
-            <button>Editar Contatos</button>
-        </form>
+    <!-- EDITAR CONTATOS -->
+    <div id="EditarContatosRecepcionista" class="card mx-auto mb-4" style="max-width:600px; display:none;">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-3">Editar Contatos</h2>
+            <form action="/EditarContatosRecepcionista" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Email:</label>
+                    <input type="email" name="email" class="form-control" value="{{Recepcionista.email}}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Telefone:</label>
+                    <input type="tel" name="telefone" class="form-control" value="{{Recepcionista.telefone}}" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Editar Contatos</button>
+            </form>
+        </div>
     </div>
 
 </div>

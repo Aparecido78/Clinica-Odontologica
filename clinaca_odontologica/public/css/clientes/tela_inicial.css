@@ -1,4 +1,3 @@
-
 .header {
     display: flex;
     flex-direction: column;
@@ -7,7 +6,6 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-
 
 .menu {
     width: 100%;
@@ -36,7 +34,6 @@
     background: rgba(255, 255, 255, 0.3);
 }
 
-
 .sair_menu {
     font-size: 20px;
     color: red;
@@ -50,7 +47,6 @@
     background: rgba(255, 0, 0, 0.2);
 }
 
-
 .tela_inicial_usuario {
     flex: 1;
     padding: 20px;
@@ -58,7 +54,6 @@
     min-height: 100vh;
     background: #f5f5f5;
 }
-
 
 .caixa-pai {
     display: flex;
@@ -109,16 +104,12 @@
     background: rgb(20, 140, 200);
 }
 
-
 #recomendacoes,
 #fichaClinica,
 #servicos,
 #perfil {
     display: none;
 }
-
-
-
 
 @media (max-width: 700px) {
     .menu {
@@ -133,9 +124,130 @@
     }
 }
 
-
 @media (max-width: 420px) {
     .caixa_servico {
         flex: 1 1 100%;
     }
+}
+
+:root {
+    --cor-principal: rgb(33, 189, 251);
+    --cor-hover: #084298;
+    --cor-sair: #ff4d4d;
+    --cor-sair-hover: #cc0000;
+}
+
+/* Navbar Cliente */
+.navbar {
+    background: var(--cor-principal) !important;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    transition: all 0.3s;
+    flex-wrap: wrap;
+}
+
+.navbar .nav-link {
+    position: relative;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* Hover para todos os links */
+.navbar .nav-link:hover {
+    background-color: var(--cor-hover);
+    transform: translateY(-2px);
+}
+
+
+.navbar .nav-link.text-danger:hover {
+    background-color: var(--cor-sair-hover);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .navbar .container .d-flex {
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .navbar .container .d-flex .nav-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar .navbar-brand {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+.card-header {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.card {
+    border-radius: 12px;
+    border: none;
+}
+
+textarea.form-control, input.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+}
+
+textarea.form-control:focus, input.form-control:focus {
+    box-shadow: 0 0 5px rgba(33, 123, 186, 0.5);
+    border-color: #217BBA;
+}
+
+.btn-primary {
+    background-color: #217BBA;
+    border-color: #217BBA;
+}
+
+.btn-primary:hover {
+    background-color: #186191;
+    border-color: #186191;
+}
+
+
+input.form-control,
+textarea.form-control {
+    background-color: #e6f2fb;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+    background-color: #d0e7fb;
+    border-color: #217BBA; 
+    box-shadow: 0 0 5px rgba(33, 123, 186, 0.5);
+    outline: none;
+}
+
+.input-error {
+  border: 2px solid #dc3545;
+}
+
+.input-success {
+  border: 2px solid #198754;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 4px;
 }
